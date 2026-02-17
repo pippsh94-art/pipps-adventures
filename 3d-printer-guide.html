@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"></head>
+<body><div class="nav"><a href="index.html">🏠 Home</a></div><div class="container"><h1
+id="d-printing-with-mac-mini-setup-guide">3D Printing with Mac Mini —
+Setup Guide</h1>
+<blockquote>
+<p>Connecting a 3D printer to your Mac mini so Clawdad can design models
+and send them to print.</p>
+</blockquote>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#the-big-picture">The Big Picture — How This Works</a></li>
+<li><a href="#recommended-printers">Recommended Printers</a></li>
+<li><a href="#slicer-software">Slicer Software (Mac-Compatible)</a></li>
+<li><a href="#3d-modeling-software">3D Modeling / Design
+Software</a></li>
+<li><a href="#the-ai-pipeline">The AI-to-Print Pipeline — How I Can
+Help</a></li>
+<li><a href="#remote-printing">Remote Printing &amp; Monitoring</a></li>
+<li><a href="#materials">Filament &amp; Materials Guide</a></li>
+<li><a href="#project-ideas">What We Could Make</a></li>
+<li><a href="#recommended-setup">Recommended Setup</a></li>
+<li><a href="#budget">Budget Breakdown</a></li>
+</ol>
+<hr />
+<h2 id="the-big-picture">1. The Big Picture</h2>
+<p>Here’s the workflow from idea to physical object:</p>
+<pre><code>You tell me what you want
+        ↓
+I generate a 3D model (OpenSCAD code or STL file)
+        ↓
+Slice it (convert 3D model to printer instructions — G-code)
+        ↓
+Send to printer (USB, Wi-Fi, or SD card)
+        ↓
+Printer makes the thing 🎉</code></pre>
+<p>The Mac mini is perfect for this — it stays on 24/7, has plenty of
+power for 3D modeling, and can run the printer directly via USB or
+control it over your network.</p>
+<hr />
+<h2 id="recommended-printers">2. Recommended Printers</h2>
+<h3 id="best-overall-bambu-lab-p1s">Best Overall: Bambu Lab P1S</h3>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Price</strong></td>
+<td>~$600 (combo with AMS)</td>
+</tr>
+<tr>
+<td><strong>Build Volume</strong></td>
+<td>256 × 256 × 256 mm (10” × 10” × 10”)</td>
+</tr>
+<tr>
+<td><strong>Print Speed</strong></td>
+<td>Up to 500 mm/s — extremely fast</td>
+</tr>
+<tr>
+<td><strong>Connectivity</strong></td>
+<td>Wi-Fi, USB, SD card, LAN</td>
+</tr>
+<tr>
+<td><strong>Mac Compatible</strong></td>
+<td>✅ Bambu Studio (native macOS app, Apple Silicon)</td>
+</tr>
+<tr>
+<td><strong>Auto-Leveling</strong></td>
+<td>✅ Fully automatic</td>
+</tr>
+<tr>
+<td><strong>Enclosed</strong></td>
+<td>✅ Yes — better print quality, quieter</td>
+</tr>
+<tr>
+<td><strong>Camera</strong></td>
+<td>✅ Built-in — monitor prints remotely</td>
+</tr>
+<tr>
+<td><strong>Multi-Color</strong></td>
+<td>✅ With AMS (Automatic Material System) — print up to 4
+colors/materials</td>
+</tr>
+<tr>
+<td><strong>Why This One</strong></td>
+<td>Best plug-and-play experience. Minimal tinkering. Incredible print
+quality out of the box. The “it just works” of 3D printers.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="runner-up-bambu-lab-a1-mini">Runner-Up: Bambu Lab A1 Mini</h3>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Price</strong></td>
+<td>~$200 ($300 with AMS Lite)</td>
+</tr>
+<tr>
+<td><strong>Build Volume</strong></td>
+<td>180 × 180 × 180 mm (7” × 7” × 7”)</td>
+</tr>
+<tr>
+<td><strong>Print Speed</strong></td>
+<td>Up to 500 mm/s</td>
+</tr>
+<tr>
+<td><strong>Connectivity</strong></td>
+<td>Wi-Fi, USB, SD card</td>
+</tr>
+<tr>
+<td><strong>Mac Compatible</strong></td>
+<td>✅ Bambu Studio</td>
+</tr>
+<tr>
+<td><strong>Auto-Leveling</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Enclosed</strong></td>
+<td>❌ Open frame</td>
+</tr>
+<tr>
+<td><strong>Camera</strong></td>
+<td>✅ Built-in</td>
+</tr>
+<tr>
+<td><strong>Why This One</strong></td>
+<td>Great entry point. Smaller build volume but same speed and quality.
+Perfect if you want to test the waters.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="best-for-detail-bambu-lab-a1-or-prusa-mk4s">Best for Detail:
+Bambu Lab A1 or Prusa MK4S</h3>
+<p><strong>Bambu Lab A1</strong> (~$400) - Full-size build volume (256 ×
+256 × 256 mm) - Open frame (not enclosed) - Great all-arounder</p>
+<p><strong>Prusa MK4S</strong> (~$600 kit, ~$800 assembled) - The
+industry workhorse — rock-solid reliability - Massive community and
+support - Open-source (you can modify everything) - PrusaSlicer is one
+of the best slicers and is Mac-native - Slightly slower than Bambu but
+extremely reliable</p>
+<h3
+id="best-for-high-detail-miniatures-elegoo-saturn-4-ultra-resin">Best
+for High Detail / Miniatures: Elegoo Saturn 4 Ultra (Resin)</h3>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Price</strong></td>
+<td>~$300</td>
+</tr>
+<tr>
+<td><strong>Technology</strong></td>
+<td>MSLA (resin, UV-cured)</td>
+</tr>
+<tr>
+<td><strong>Resolution</strong></td>
+<td>7K — incredibly detailed</td>
+</tr>
+<tr>
+<td><strong>Why</strong></td>
+<td>If you want tiny detailed parts, figurines, or jewelry-quality
+prints. Resin gives 10x the detail of FDM.</td>
+</tr>
+<tr>
+<td><strong>Downside</strong></td>
+<td>Messy (liquid resin), requires post-processing (washing + curing),
+smells (needs ventilation). Not as beginner-friendly.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-table">Comparison Table</h3>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 12%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr>
+<th>Printer</th>
+<th>Price</th>
+<th>Build Size</th>
+<th>Speed</th>
+<th>Enclosed</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bambu Lab A1 Mini</strong></td>
+<td>$200</td>
+<td>7” cube</td>
+<td>Fast</td>
+<td>No</td>
+<td>Starter / small projects</td>
+</tr>
+<tr>
+<td><strong>Bambu Lab A1</strong></td>
+<td>$400</td>
+<td>10” cube</td>
+<td>Fast</td>
+<td>No</td>
+<td>All-around, great value</td>
+</tr>
+<tr>
+<td><strong>Bambu Lab P1S</strong></td>
+<td>$600</td>
+<td>10” cube</td>
+<td>Fast</td>
+<td>Yes</td>
+<td>Best overall — quiet, reliable, enclosed</td>
+</tr>
+<tr>
+<td><strong>Bambu Lab X1C</strong></td>
+<td>$1,100</td>
+<td>10” cube</td>
+<td>Fast</td>
+<td>Yes</td>
+<td>Premium — carbon fiber capable</td>
+</tr>
+<tr>
+<td><strong>Prusa MK4S</strong></td>
+<td>$600–$800</td>
+<td>10” × 8.3” × 8.6”</td>
+<td>Moderate</td>
+<td>No</td>
+<td>Reliability, open-source, huge community</td>
+</tr>
+<tr>
+<td><strong>Elegoo Saturn 4</strong></td>
+<td>$300</td>
+<td>Smaller</td>
+<td>Slow</td>
+<td>Yes</td>
+<td>Ultra-fine detail, miniatures</td>
+</tr>
+</tbody>
+</table>
+<h3 id="my-pick-for-you-bambu-lab-p1s-combo-600">My Pick for You:
+<strong>Bambu Lab P1S Combo ($600)</strong></h3>
+<p>Why: - Enclosed = quieter and better prints (important if it’s near
+the Mac mini) - Wi-Fi = I can potentially send prints to it directly
+from the Mac mini - Camera = you can watch prints from anywhere - AMS =
+multi-color capability for fun projects - Mac software is polished and
+native - Minimal tinkering — you want to make things, not debug a
+printer</p>
+<hr />
+<h2 id="slicer-software-mac-compatible">3. Slicer Software
+(Mac-Compatible)</h2>
+<p>The slicer converts your 3D model (STL/3MF file) into G-code
+instructions the printer understands.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 28%" />
+<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>Software</th>
+<th>Mac Support</th>
+<th>Printer</th>
+<th>Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bambu Studio</strong></td>
+<td>✅ Native (Apple Silicon)</td>
+<td>Bambu printers</td>
+<td>Free</td>
+<td>Best for Bambu printers. Sends directly via Wi-Fi.</td>
+</tr>
+<tr>
+<td><strong>PrusaSlicer</strong></td>
+<td>✅ Native</td>
+<td>Any FDM printer</td>
+<td>Free</td>
+<td>Excellent, open-source, works with any printer</td>
+</tr>
+<tr>
+<td><strong>OrcaSlicer</strong></td>
+<td>✅ Native</td>
+<td>Any FDM printer</td>
+<td>Free</td>
+<td>Fork of PrusaSlicer/Bambu Studio. Power-user features. Community
+favorite.</td>
+</tr>
+<tr>
+<td><strong>Cura</strong></td>
+<td>✅ Native</td>
+<td>Any FDM printer</td>
+<td>Free</td>
+<td>UltiMaker’s slicer. Huge preset library.</td>
+</tr>
+<tr>
+<td><strong>ChiTuBox</strong></td>
+<td>✅ Native</td>
+<td>Resin printers</td>
+<td>Free/Pro</td>
+<td>For resin printers (Elegoo, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For a Bambu printer:</strong> Use Bambu Studio. It integrates
+perfectly — model preview, slicing, and sending to printer all in one
+app.</p>
+<hr />
+<h2 id="d-modeling-design-software">4. 3D Modeling / Design
+Software</h2>
+<p>This is where we design the actual objects. Here’s what runs on Mac
+and what I can work with:</p>
+<h3 id="what-i-can-generate-directly">What I Can Generate Directly</h3>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 34%" />
+<col style="width: 34%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tool</th>
+<th>How I Use It</th>
+<th>Mac Support</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenSCAD</strong></td>
+<td>✅ I write code → it generates 3D models. Parametric design. Perfect
+for mechanical parts, enclosures, brackets, functional items.</td>
+<td>✅ Native</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong>CadQuery / Build123d</strong></td>
+<td>✅ Python-based CAD. I write Python scripts → generates precise 3D
+models. More powerful than OpenSCAD.</td>
+<td>✅ (Python)</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong>Blender (scripted)</strong></td>
+<td>✅ I can write Blender Python scripts for organic/artistic
+shapes</td>
+<td>✅ Native</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong>FreeCAD</strong></td>
+<td>✅ I can generate FreeCAD macros</td>
+<td>✅ Native</td>
+<td>Free</td>
+</tr>
+</tbody>
+</table>
+<h3 id="interactive-design-tools-you-use">Interactive Design Tools (You
+Use)</h3>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 26%" />
+<col style="width: 38%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Best For</th>
+<th>Mac Support</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tinkercad</strong></td>
+<td>Beginners — drag and drop shapes in a browser</td>
+<td>✅ Web-based</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong>Fusion 360</strong></td>
+<td>Serious CAD — mechanical parts, assemblies</td>
+<td>✅ Native</td>
+<td>Free for personal use</td>
+</tr>
+<tr>
+<td><strong>Blender</strong></td>
+<td>Artistic/organic shapes, characters, sculptures</td>
+<td>✅ Native</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong>Shapr3D</strong></td>
+<td>iPad/Mac CAD — very intuitive</td>
+<td>✅ Native</td>
+<td>$25/mo or $300/year</td>
+</tr>
+<tr>
+<td><strong>OnShape</strong></td>
+<td>Professional CAD in the browser</td>
+<td>✅ Web-based</td>
+<td>Free for personal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-killer-combo-openscad-me">The Killer Combo: OpenSCAD +
+Me</h3>
+<p>Here’s why this is exciting — <strong>I can write OpenSCAD code
+directly.</strong> You describe what you want, I write the parametric
+model, you render it and print it. Example:</p>
+<p>You say: <em>“Make me a phone holder for my nightstand, 3.5 inches
+wide, with a 15-degree angle”</em></p>
+<p>I write:</p>
+<pre class="openscad"><code>// Phone holder - parametric
+phone_width = 89; // 3.5 inches in mm
+angle = 15;
+thickness = 3;
+depth = 40;
+lip_height = 15;
+
+module phone_holder() {
+    // Base
+    cube([phone_width + 10, depth, thickness]);
+    // Back support
+    translate([0, 0, 0])
+        rotate([90 - angle, 0, 0])
+            cube([phone_width + 10, 80, thickness]);
+    // Front lip
+    translate([0, 0, 0])
+        cube([phone_width + 10, thickness, lip_height]);
+}
+
+phone_holder();</code></pre>
+<p>You open it in OpenSCAD → render → export STL → slice → print.
+Done.</p>
+<hr />
+<h2 id="the-ai-to-print-pipeline">5. The AI-to-Print Pipeline</h2>
+<p>Here’s how the full workflow works with me involved:</p>
+<h3 id="option-a-i-design-you-print-easiest">Option A: I Design, You
+Print (Easiest)</h3>
+<ol type="1">
+<li><strong>You describe</strong> what you want (with rough
+dimensions)</li>
+<li><strong>I write</strong> the OpenSCAD/CadQuery code</li>
+<li><strong>I save</strong> the <code>.scad</code> or <code>.py</code>
+file to the workspace</li>
+<li><strong>You open</strong> it in OpenSCAD, render, export as STL</li>
+<li><strong>You open</strong> the STL in Bambu Studio, slice it</li>
+<li><strong>Send to printer</strong> via Wi-Fi → done</li>
+</ol>
+<h3 id="option-b-fully-automated-advanced-setup">Option B: Fully
+Automated (Advanced Setup)</h3>
+<p>With some setup, we can make this nearly hands-free:</p>
+<ol type="1">
+<li>You describe what you want</li>
+<li>I write the model code</li>
+<li>I run OpenSCAD from the command line to export STL
+automatically</li>
+<li>I run the slicer from command line to generate G-code</li>
+<li>I send it to the printer via API/network</li>
+<li>You just hit “confirm print” on the printer’s touchscreen</li>
+</ol>
+<p><strong>This requires:</strong> OpenSCAD CLI + OrcaSlicer CLI + Bambu
+network API. All doable on the Mac mini.</p>
+<h3 id="option-c-download-print">Option C: Download &amp; Print</h3>
+<p>For common objects, I can find existing models on: -
+<strong>Printables.com</strong> (Prusa’s model repository — huge, free)
+- <strong>Thingiverse.com</strong> (biggest library) -
+<strong>Thangs.com</strong> (searchable by geometry) -
+<strong>MyMiniFactory.com</strong> (curated, guaranteed printable)</p>
+<p>I find the STL, you slice and print. No design needed.</p>
+<hr />
+<h2 id="remote-printing-monitoring">6. Remote Printing &amp;
+Monitoring</h2>
+<h3 id="bambu-lab-cloud-built-in">Bambu Lab Cloud (Built-In)</h3>
+<ul>
+<li>Bambu printers connect to their cloud service via Wi-Fi</li>
+<li>Monitor prints with the built-in camera from the Bambu Handy phone
+app</li>
+<li>Start/stop/pause prints remotely</li>
+<li>Works great out of the box</li>
+</ul>
+<h3 id="octoprint-advanced-any-printer">OctoPrint (Advanced, Any
+Printer)</h3>
+<ul>
+<li>Open-source print server that runs on a Raspberry Pi (or your Mac
+mini)</li>
+<li>Web interface to control any 3D printer remotely</li>
+<li>Webcam monitoring, print history, G-code viewer</li>
+<li>Plugin ecosystem (Obico AI failure detection — pauses print if it
+detects spaghetti)</li>
+<li><strong>Great if you go with a non-Bambu printer</strong></li>
+</ul>
+<h3 id="using-the-mac-mini-as-print-server">Using the Mac Mini as Print
+Server</h3>
+<p>Since your Mac mini runs 24/7 with OpenClaw, it’s ideal as a print
+server: - Connect printer via USB or Wi-Fi - Run OctoPrint in Docker (if
+needed) - I can monitor print status and notify you when done - I can
+queue up prints while you’re away</p>
+<hr />
+<h2 id="filament-materials-guide">7. Filament &amp; Materials Guide</h2>
+<h3 id="fdm-filament-types">FDM Filament Types</h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr>
+<th>Material</th>
+<th>Price/kg</th>
+<th>Strength</th>
+<th>Easy to Print</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PLA</strong></td>
+<td>$15–$25</td>
+<td>Moderate</td>
+<td>✅ Easiest</td>
+<td>General use, decorative, prototypes. Start here.</td>
+</tr>
+<tr>
+<td><strong>PLA+</strong></td>
+<td>$18–$28</td>
+<td>Good</td>
+<td>✅ Easy</td>
+<td>Stronger PLA. Good all-arounder.</td>
+</tr>
+<tr>
+<td><strong>PETG</strong></td>
+<td>$20–$30</td>
+<td>Good</td>
+<td>✅ Easy</td>
+<td>Outdoor use, water-resistant, flexible.</td>
+</tr>
+<tr>
+<td><strong>ABS</strong></td>
+<td>$18–$25</td>
+<td>Good</td>
+<td>⚠️ Needs enclosure</td>
+<td>Automotive parts, heat-resistant. Fumes — need ventilation.</td>
+</tr>
+<tr>
+<td><strong>TPU</strong></td>
+<td>$25–$35</td>
+<td>Flexible</td>
+<td>⚠️ Moderate</td>
+<td>Phone cases, gaskets, grips, anything bendy.</td>
+</tr>
+<tr>
+<td><strong>ASA</strong></td>
+<td>$25–$35</td>
+<td>Great</td>
+<td>⚠️ Needs enclosure</td>
+<td>UV-resistant outdoor parts. Better ABS.</td>
+</tr>
+<tr>
+<td><strong>Nylon</strong></td>
+<td>$30–$50</td>
+<td>Excellent</td>
+<td>⚠️ Hard</td>
+<td>Gears, functional mechanical parts.</td>
+</tr>
+<tr>
+<td><strong>Carbon Fiber PLA/PETG</strong></td>
+<td>$35–$50</td>
+<td>Excellent</td>
+<td>⚠️ Abrasive</td>
+<td>Stiff, lightweight. Needs hardened nozzle.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-to-buy">Where to Buy</h3>
+<ul>
+<li><strong>Amazon</strong> — Convenient, huge selection</li>
+<li><strong>Bambu Lab Store</strong> — Their filament is excellent
+quality and pre-profiled for their printers</li>
+<li><strong>Printed Solid</strong> — Great US-based supplier</li>
+<li><strong>MatterHackers</strong> — Wide selection, good quality</li>
+<li><strong>Micro Center</strong> — If you’re near one (closest to
+Boise: none, unfortunately)</li>
+</ul>
+<h3 id="start-with">Start With</h3>
+<ul>
+<li><strong>2 rolls of PLA</strong> (1 black, 1 white) — $30–$40
+total</li>
+<li>That’s enough for dozens of prints while you learn</li>
+</ul>
+<hr />
+<h2 id="what-we-could-make">8. What We Could Make</h2>
+<p>Here’s where it gets fun. Things I can design for you to print:</p>
+<h3 id="around-the-house">Around the House</h3>
+<ul>
+<li>Custom phone/tablet stands</li>
+<li>Cable management clips sized for your exact desk</li>
+<li>Drawer organizers with custom compartments</li>
+<li>Light switch plates with custom designs</li>
+<li>Wall-mount holders for remotes, keys, etc.</li>
+<li>Replacement knobs, handles, clips for anything broken</li>
+<li>Custom shelf brackets</li>
+</ul>
+<h3 id="for-the-rv-camping">For the RV / Camping</h3>
+<ul>
+<li>Custom cup holders sized for your rig</li>
+<li>Awning clips and hooks</li>
+<li>Leveling block stackers</li>
+<li>Cord organizers for hookups</li>
+<li>Utensil holders that fit your specific cabinets</li>
+<li>Custom vent covers</li>
+<li>Map/phone mount for the dash</li>
+<li>Propane cap tethers</li>
+</ul>
+<h3 id="for-the-32-ford-if-you-get-one">For the ’32 Ford (If You Get
+One!)</h3>
+<ul>
+<li>Custom gauge bezels</li>
+<li>Switch panel blanks</li>
+<li>Interior trim pieces</li>
+<li>Wiring loom clips sized for your harness</li>
+<li>Hood prop rod holders</li>
+<li>Tool tray organizers for the trunk</li>
+<li>Custom emblems or badges</li>
+<li>Throttle linkage brackets</li>
+</ul>
+<h3 id="fun-stuff">Fun Stuff</h3>
+<ul>
+<li>Chess set</li>
+<li>Desk toys and fidget gadgets</li>
+<li>Planters with drainage</li>
+<li>Lithophanes (photos printed as 3D transparencies — backlight them
+and the image appears)</li>
+<li>Topographic map models of your camping destinations</li>
+<li>Miniature ’32 Ford model 😎</li>
+</ul>
+<h3 id="functional-mechanical">Functional / Mechanical</h3>
+<ul>
+<li>Gear sets and mechanisms</li>
+<li>Enclosures for electronics projects</li>
+<li>Tool holders and organizers</li>
+<li>Jigs and fixtures for woodworking</li>
+<li>Custom brackets and mounts for anything</li>
+</ul>
+<hr />
+<h2 id="recommended-setup">9. Recommended Setup</h2>
+<h3 id="hardware">Hardware</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Model</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3D Printer</strong></td>
+<td>Bambu Lab P1S Combo (with AMS)</td>
+<td>~$600</td>
+</tr>
+<tr>
+<td><strong>Filament starter pack</strong></td>
+<td>2 rolls PLA (Bambu Lab brand)</td>
+<td>~$40</td>
+</tr>
+<tr>
+<td><strong>Build plate adhesive</strong></td>
+<td>Glue stick (Elmer’s purple)</td>
+<td>~$3</td>
+</tr>
+<tr>
+<td><strong>Part removal</strong></td>
+<td>Metal spatula / scraper</td>
+<td>~$8</td>
+</tr>
+<tr>
+<td><strong>Flush cutters</strong></td>
+<td>For removing supports</td>
+<td>~$8</td>
+</tr>
+<tr>
+<td><strong>IPA (Isopropyl Alcohol)</strong></td>
+<td>For cleaning build plate</td>
+<td>~$5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="software-all-free-all-mac-native">Software (All Free, All
+Mac-Native)</h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bambu Studio</strong></td>
+<td>Slicing + sending to printer</td>
+</tr>
+<tr>
+<td><strong>OpenSCAD</strong></td>
+<td>I write parametric model code for you</td>
+</tr>
+<tr>
+<td><strong>Blender</strong> (optional)</td>
+<td>Artistic/organic modeling</td>
+</tr>
+<tr>
+<td><strong>FreeCAD</strong> (optional)</td>
+<td>Traditional CAD modeling</td>
+</tr>
+</tbody>
+</table>
+<h3 id="physical-setup">Physical Setup</h3>
+<ul>
+<li>Place printer on a <strong>sturdy, level surface</strong> near the
+Mac mini (or anywhere with Wi-Fi)</li>
+<li>Printer connects via <strong>Wi-Fi</strong> — doesn’t need to be
+physically next to the Mac mini</li>
+<li>Ensure <strong>good ventilation</strong> (PLA is low-fume but some
+materials need airflow)</li>
+<li>Temperature: printer works best in 60–85°F room. Your house is
+fine.</li>
+</ul>
+<hr />
+<h2 id="budget-breakdown">10. Budget Breakdown</h2>
+<h3 id="starter-setup">Starter Setup</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bambu Lab P1S Combo</td>
+<td>$600</td>
+</tr>
+<tr>
+<td>2 rolls PLA filament</td>
+<td>$40</td>
+</tr>
+<tr>
+<td>Basic tools (cutters, scraper, glue stick)</td>
+<td>$25</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~$665</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="budget-option">Budget Option</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bambu Lab A1 Mini + AMS Lite</td>
+<td>$300</td>
+</tr>
+<tr>
+<td>2 rolls PLA filament</td>
+<td>$40</td>
+</tr>
+<tr>
+<td>Basic tools</td>
+<td>$25</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~$365</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="premium-setup">Premium Setup</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bambu Lab X1 Carbon Combo</td>
+<td>$1,100</td>
+</tr>
+<tr>
+<td>4 rolls mixed filament (PLA, PETG, TPU)</td>
+<td>$100</td>
+</tr>
+<tr>
+<td>Filament dryer</td>
+<td>$50</td>
+</tr>
+<tr>
+<td>Tools + accessories</td>
+<td>$50</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~$1,300</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="where-to-buy-1">Where to Buy</h2>
+<ul>
+<li><strong>Bambu Lab direct:</strong> store.bambulab.com — best price,
+ships from US warehouse</li>
+<li><strong>Amazon:</strong> Usually same price, faster shipping
+sometimes</li>
+<li><strong>Micro Center:</strong> In-store if near one (none near Boise
+unfortunately)</li>
+</ul>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<ol type="1">
+<li><strong>Pick a printer</strong> — I recommend the P1S Combo ($600)
+for the best experience</li>
+<li><strong>Order it</strong> — Ships in a few days from Bambu Lab</li>
+<li><strong>I’ll install OpenSCAD</strong> on the Mac mini while we
+wait</li>
+<li><strong>When it arrives:</strong> 30-minute setup (unbox, level,
+connect Wi-Fi, test print)</li>
+<li><strong>Tell me what to make</strong> — I’ll start designing</li>
+</ol>
+<p>Once we’re set up, the workflow is: you describe it → I code it → you
+print it. We can iterate fast — change dimensions, add features, tweak
+the design — all through conversation. It’s like having a machinist on
+call. 🦞🔧</p>
+<hr />
+<p><em>Last updated: February 2026</em></p></div></body></html>
