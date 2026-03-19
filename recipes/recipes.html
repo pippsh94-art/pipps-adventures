@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Recipe Collection - All Recipes</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="../index.html">🏠 Home</a>
+        <a href="#search">🔍 Search</a>
+    </div>
+    <div class="container">
+        <h1>Recipe Collection</h1>
+        
+        <div class="card">
+            <p>A collection of 4 delicious recipes extracted from the recipe book.</p>
+            
+            <div style="margin: 1rem 0;">
+                <input type="text" id="searchBox" placeholder="Search recipes..." 
+                       style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 1rem;">
+            </div>
+        </div>
+        
+        <div class="recipe-grid" id="recipeGrid">
+            
+        <div class="recipe-card card" style="margin-bottom: 1rem;">
+            <h3><a href="html/0001-keto-scalloped-turnips.html">Keto Scalloped Turnips</a></h3>
+            <p style="color: #718096; font-size: 0.9em;">Recipe #0001</p>
+        </div>
+
+        <div class="recipe-card card" style="margin-bottom: 1rem;">
+            <h3><a href="html/0002-keto-chicken-parmesan.html">Keto Chicken Parmesan</a></h3>
+            <p style="color: #718096; font-size: 0.9em;">Recipe #0002</p>
+        </div>
+
+        <div class="recipe-card card" style="margin-bottom: 1rem;">
+            <h3><a href="html/0003-keto-bread.html">Keto Bread</a></h3>
+            <p style="color: #718096; font-size: 0.9em;">Recipe #0003</p>
+        </div>
+
+        <div class="recipe-card card" style="margin-bottom: 1rem;">
+            <h3><a href="html/0004-skillet-chicken-in-creamy-sun-dried-tomato-sauce.html">Skillet Chicken In Creamy Sun Dried Tomato Sauce</a></h3>
+            <p style="color: #718096; font-size: 0.9em;">Recipe #0004</p>
+        </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple search functionality
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.recipe-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(searchTerm) || searchTerm === '') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
