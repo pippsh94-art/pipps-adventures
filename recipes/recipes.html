@@ -15,6 +15,11 @@
         <header>
             <h1>📖 Recipe Collection</h1>
             <p>A curated collection of 832 delicious recipes</p>
+            
+            <div class="search-container">
+                <input type="text" id="recipe-search" placeholder="🔍 Search recipes by name or ingredient..." />
+                <div class="search-results" id="search-results"></div>
+            </div>
         </header>
         
         <div class="recipe-grid">
@@ -1643,5 +1648,117 @@
         
         </div>
     </div>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('recipe-search');
+        const searchResults = document.getElementById('search-results');
+        const recipeCards = document.querySelectorAll('.recipe-card');
+        
+        // Create searchable data from recipe cards
+        const recipes = Array.from(recipeCards).map((card, index) => {
+            const title = card.querySelector('h3 a').textContent;
+            const description = card.querySelector('p').textContent;
+            const number = card.querySelector('.recipe-number').textContent;
+            return {
+                element: card,
+                title: title.toLowerCase(),
+                description: description.toLowerCase(),
+                number: number,
+                displayTitle: title,
+                displayDescription: description,
+                index: index
+            };
+        });
+
+        let searchTimeout;
+
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const query = this.value.toLowerCase().trim();
+                
+                if (query.length === 0) {
+                    // Show all recipes
+                    recipeCards.forEach(card => card.classList.remove('recipe-hidden'));
+                    hideSearchResults();
+                    return;
+                }
+
+                if (query.length < 2) {
+                    hideSearchResults();
+                    return;
+                }
+
+                // Filter recipes
+                const matches = recipes.filter(recipe => 
+                    recipe.title.includes(query) || 
+                    recipe.description.includes(query) ||
+                    recipe.number.toLowerCase().includes(query)
+                );
+
+                // Hide all recipes first
+                recipeCards.forEach(card => card.classList.add('recipe-hidden'));
+
+                // Show matching recipes
+                matches.forEach(match => {
+                    match.element.classList.remove('recipe-hidden');
+                });
+
+                // Show search results dropdown
+                showSearchResults(matches.slice(0, 10), query); // Show top 10 matches
+            }, 300);
+        });
+
+        function showSearchResults(matches, query) {
+            if (matches.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item">No recipes found</div>';
+            } else {
+                searchResults.innerHTML = matches.map(match => `
+                    <div class="search-result-item" onclick="scrollToRecipe(${match.index})">
+                        <div class="search-result-title">${highlightMatch(match.displayTitle, query)}</div>
+                        <div class="search-result-description">${highlightMatch(match.displayDescription.substring(0, 100) + '...', query)}</div>
+                        <div class="search-result-number">${match.number}</div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        function hideSearchResults() {
+            searchResults.style.display = 'none';
+        }
+
+        function highlightMatch(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<strong style="background: #fef2e0;">$1</strong>');
+        }
+
+        function scrollToRecipe(index) {
+            const recipe = recipeCards[index];
+            recipe.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            hideSearchResults();
+            searchInput.value = '';
+            // Show all recipes again
+            recipeCards.forEach(card => card.classList.remove('recipe-hidden'));
+        }
+
+        // Hide search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                hideSearchResults();
+            }
+        });
+
+        // Handle escape key
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                this.value = '';
+                recipeCards.forEach(card => card.classList.remove('recipe-hidden'));
+                hideSearchResults();
+            }
+        });
+    </script>
 </body>
 </html>
