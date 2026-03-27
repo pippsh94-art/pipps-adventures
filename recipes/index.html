@@ -3,41 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Recipe Collection</title>
+    <link rel="stylesheet" href="../style.css">
+    <title>Recipe Collection - Pipps Adventures</title>
 </head>
 <body>
     <div class="nav">
         <a href="../index.html">🏠 Home</a>
-        <a href="recipes.html">📖 All Recipes</a>
+        <a href="#search">🔍 Search</a>
     </div>
     <div class="container">
         <h1>🍳 Recipe Collection</h1>
         
         <div class="card">
-            <h2>Welcome to the Recipe Book</h2>
-            <p>This is a digital version of a 832-page recipe collection, converted to individual HTML pages for easy browsing and searching.</p>
+            <h2>Welcome to the Digital Recipe Book</h2>
+            <p>A collection of <strong>57 recipes</strong> extracted from a comprehensive cookbook and converted to searchable HTML pages.</p>
             
             <div style="margin: 2rem 0;">
-                <a href="recipes.html" class="button" style="display: inline-block; background: #3182ce; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    Browse All Recipes →
-                </a>
+                <input type="text" id="searchBox" placeholder="Search recipes..." 
+                       style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem;">
             </div>
             
-            <h3>Features</h3>
+            <h3>Featured Recipes</h3>
             <ul>
-                <li>🔍 Search recipes by name</li>
-                <li>📱 Mobile-friendly design</li>
-                <li>⏱️ Prep and cook times</li>
-                <li>📋 Organized ingredients and instructions</li>
-                <li>🎯 Direct links to each recipe</li>
+                <li><a href="0001-keto-scalloped-turnips.html">Keto Scalloped Turnips</a></li>
+                <li><a href="0041-roasted-fennel-italian-sausage-stuffing.html">Roasted Fennel & Italian Sausage Stuffing</a></li>
+                <li><a href="0042-potato-chickpea-curry.html">Potato & Chickpea Curry</a></li>
+                <li><a href="0054-chicken-tagine-with-apricots-olives.html">Chicken Tagine with Apricots & Olives</a></li>
+                <li><a href="0057-chile-lime-cauliflower-quesadillas.html">Chile-Lime Cauliflower Quesadillas</a></li>
             </ul>
             
-            <h3>Source</h3>
-            <p style="font-size: 0.9em; color: #718096;">
-                Extracted from RG_Recipes_9-3-26_79793758.pdf using AI-powered content extraction.
-            </p>
+            <h3>Recipe Categories</h3>
+            <p><strong>Keto & Low-Carb</strong> • <strong>International Flavors</strong> • <strong>Comfort Food</strong> • <strong>Vegetarian Options</strong></p>
+            
+            <div style="margin: 2rem 0;">
+                <a href="#all-recipes" style="display: inline-block; background: #3182ce; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                    Browse All 57 Recipes ↓
+                </a>
+            </div>
+        </div>
+        
+        <div id="all-recipes">
+            <h2>All Recipes</h2>
+            <p><em>Recipe list will be populated here...</em></p>
         </div>
     </div>
+    
+    <script>
+        // Simple search functionality would go here
+        console.log('Recipe collection loaded with 57 recipes');
+    </script>
 </body>
 </html>
