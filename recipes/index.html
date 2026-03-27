@@ -1,56 +1,458 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alicia's Recipe Collection - 49 Recipes</title>
     <link rel="stylesheet" href="../style.css">
-    <title>Recipe Collection - Pipps Adventures</title>
+    <style>
+        .search-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .recipe-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .recipe-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #3182ce;
+        }
+        .recipe-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .recipe-number {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .recipe-title {
+            color: #2d3748;
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        .recipe-card:hover .recipe-title {
+            color: #3182ce;
+        }
+        .stats {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+        .count {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3182ce;
+            margin-bottom: 0.5rem;
+        }
+        .hidden {
+            display: none;
+        }
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #718096;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
 <body>
     <div class="nav">
         <a href="../index.html">🏠 Home</a>
         <a href="#search">🔍 Search</a>
     </div>
+    
     <div class="container">
-        <h1>🍳 Recipe Collection</h1>
+        <h1>🍳 Alicia's Recipe Collection</h1>
         
-        <div class="card">
-            <h2>Welcome to the Digital Recipe Book</h2>
-            <p>A collection of <strong>57 recipes</strong> extracted from a comprehensive cookbook and converted to searchable HTML pages.</p>
-            
-            <div style="margin: 2rem 0;">
-                <input type="text" id="searchBox" placeholder="Search recipes..." 
-                       style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem;">
+        <div class="stats">
+            <div class="count">49</div>
+            <p>Authentic recipes from Alicia's cookbook</p>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="searchBox" class="search-box" 
+                   placeholder="Search recipes by name or ingredient..." 
+                   autocomplete="off">
+        </div>
+        
+        <div id="recipeGrid" class="recipe-grid">
+            <div class="recipe-card" data-title="skillet chicken in creamy sun dried tomato sauce" data-page="4">
+                <a href="0004-skillet-chicken-in-creamy-sun-dried-tomato-sauce.html" class="recipe-link">
+                    <div class="recipe-number">#4</div>
+                    <h3 class="recipe-title">Skillet Chicken In Creamy Sun Dried Tomato Sauce</h3>
+                </a>
             </div>
-            
-            <h3>Featured Recipes</h3>
-            <ul>
-                <li><a href="0001-keto-scalloped-turnips.html">Keto Scalloped Turnips</a></li>
-                <li><a href="0041-roasted-fennel-italian-sausage-stuffing.html">Roasted Fennel & Italian Sausage Stuffing</a></li>
-                <li><a href="0042-potato-chickpea-curry.html">Potato & Chickpea Curry</a></li>
-                <li><a href="0054-chicken-tagine-with-apricots-olives.html">Chicken Tagine with Apricots & Olives</a></li>
-                <li><a href="0057-chile-lime-cauliflower-quesadillas.html">Chile-Lime Cauliflower Quesadillas</a></li>
-            </ul>
-            
-            <h3>Recipe Categories</h3>
-            <p><strong>Keto & Low-Carb</strong> • <strong>International Flavors</strong> • <strong>Comfort Food</strong> • <strong>Vegetarian Options</strong></p>
-            
-            <div style="margin: 2rem 0;">
-                <a href="#all-recipes" style="display: inline-block; background: #3182ce; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    Browse All 57 Recipes ↓
+            <div class="recipe-card" data-title="chicken bacon ranch pizza" data-page="5">
+                <a href="0005-chicken-bacon-ranch-pizza.html" class="recipe-link">
+                    <div class="recipe-number">#5</div>
+                    <h3 class="recipe-title">Chicken Bacon Ranch Pizza</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="chicken bacon ranch pizza page 2" data-page="6">
+                <a href="0006-chicken-bacon-ranch-pizza-page-2.html" class="recipe-link">
+                    <div class="recipe-number">#6</div>
+                    <h3 class="recipe-title">Chicken Bacon Ranch Pizza Page 2</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="drop biscuits instructions page" data-page="8">
+                <a href="0008-drop-biscuits-instructions-page.html" class="recipe-link">
+                    <div class="recipe-number">#8</div>
+                    <h3 class="recipe-title">Drop Biscuits Instructions Page</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="meatza supreme" data-page="9">
+                <a href="0009-meatza-supreme.html" class="recipe-link">
+                    <div class="recipe-number">#9</div>
+                    <h3 class="recipe-title">Meatza Supreme</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="meatza supreme" data-page="10">
+                <a href="0010-meatza-supreme.html" class="recipe-link">
+                    <div class="recipe-number">#10</div>
+                    <h3 class="recipe-title">Meatza Supreme</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="how to cook bacon in the oven easy method" data-page="13">
+                <a href="0013-how-to-cook-bacon-in-the-oven-easy-method.html" class="recipe-link">
+                    <div class="recipe-number">#13</div>
+                    <h3 class="recipe-title">How To Cook Bacon In The Oven Easy Method</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="healthy broccoli cheese soup tips page" data-page="18">
+                <a href="0018-healthy-broccoli-cheese-soup-tips-page.html" class="recipe-link">
+                    <div class="recipe-number">#18</div>
+                    <h3 class="recipe-title">Healthy Broccoli Cheese Soup Tips Page</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="broccoli cheese soup low carb gluten free thickening tips" data-page="19">
+                <a href="0019-broccoli-cheese-soup-low-carb-gluten-free---thickening-tips.html" class="recipe-link">
+                    <div class="recipe-number">#19</div>
+                    <h3 class="recipe-title">Broccoli Cheese Soup Low Carb Gluten Free Thickening Tips</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="broccoli cheese soup low carb gluten free preparation tips" data-page="20">
+                <a href="0020-broccoli-cheese-soup-low-carb-gluten-free---preparation-tips.html" class="recipe-link">
+                    <div class="recipe-number">#20</div>
+                    <h3 class="recipe-title">Broccoli Cheese Soup Low Carb Gluten Free Preparation Tips</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="spaghetti squash" data-page="23">
+                <a href="0023-spaghetti-squash.html" class="recipe-link">
+                    <div class="recipe-number">#23</div>
+                    <h3 class="recipe-title">Spaghetti Squash</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="spaghetti squash with meat and mozzarella final steps" data-page="24">
+                <a href="0024-spaghetti-squash-with-meat-and-mozzarella-final-steps.html" class="recipe-link">
+                    <div class="recipe-number">#24</div>
+                    <h3 class="recipe-title">Spaghetti Squash With Meat And Mozzarella Final Steps</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="ham cheddar cauliflower chowder" data-page="26">
+                <a href="0026-ham-cheddar-cauliflower-chowder.html" class="recipe-link">
+                    <div class="recipe-number">#26</div>
+                    <h3 class="recipe-title">Ham Cheddar Cauliflower Chowder</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="low carb twice baked cauliflower" data-page="29">
+                <a href="0029-low-carb-twice-baked-cauliflower.html" class="recipe-link">
+                    <div class="recipe-number">#29</div>
+                    <h3 class="recipe-title">Low Carb Twice Baked Cauliflower</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="mozzarella stuffed italian meatloaf minis" data-page="31">
+                <a href="0031-mozzarella-stuffed-italian-meatloaf-minis.html" class="recipe-link">
+                    <div class="recipe-number">#31</div>
+                    <h3 class="recipe-title">Mozzarella Stuffed Italian Meatloaf Minis</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="chicken tetrazzini" data-page="32">
+                <a href="0032-chicken-tetrazzini.html" class="recipe-link">
+                    <div class="recipe-number">#32</div>
+                    <h3 class="recipe-title">Chicken Tetrazzini</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="sausage spiked meatloaves" data-page="33">
+                <a href="0033-sausage-spiked-meatloaves.html" class="recipe-link">
+                    <div class="recipe-number">#33</div>
+                    <h3 class="recipe-title">Sausage Spiked Meatloaves</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="1 2 brie three creative brie appetizers" data-page="34">
+                <a href="0034-1-2-brie-three-creative-brie-appetizers.html" class="recipe-link">
+                    <div class="recipe-number">#34</div>
+                    <h3 class="recipe-title">1 2 Brie Three Creative Brie Appetizers</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="double chocolate avocado muffins" data-page="35">
+                <a href="0035-double-chocolate-avocado-muffins.html" class="recipe-link">
+                    <div class="recipe-number">#35</div>
+                    <h3 class="recipe-title">Double Chocolate Avocado Muffins</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="crispy smashed russets with green horseradish sauce" data-page="36">
+                <a href="0036-crispy-smashed-russets-with-green-horseradish-sauce.html" class="recipe-link">
+                    <div class="recipe-number">#36</div>
+                    <h3 class="recipe-title">Crispy Smashed Russets With Green Horseradish Sauce</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="potato artichoke gratin" data-page="37">
+                <a href="0037-potato-artichoke-gratin.html" class="recipe-link">
+                    <div class="recipe-number">#37</div>
+                    <h3 class="recipe-title">Potato Artichoke Gratin</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="whipped russet potatoes with sage brown butter" data-page="38">
+                <a href="0038-whipped-russet-potatoes-with-sage-brown-butter.html" class="recipe-link">
+                    <div class="recipe-number">#38</div>
+                    <h3 class="recipe-title">Whipped Russet Potatoes With Sage Brown Butter</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="potato feta mini frittatas" data-page="39">
+                <a href="0039-potato-feta-mini-frittatas.html" class="recipe-link">
+                    <div class="recipe-number">#39</div>
+                    <h3 class="recipe-title">Potato Feta Mini Frittatas</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="braised brisket with dried fruit" data-page="40">
+                <a href="0040-braised-brisket-with-dried-fruit.html" class="recipe-link">
+                    <div class="recipe-number">#40</div>
+                    <h3 class="recipe-title">Braised Brisket With Dried Fruit</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="roasted fennel italian sausage stuffing" data-page="41">
+                <a href="0041-roasted-fennel-italian-sausage-stuffing.html" class="recipe-link">
+                    <div class="recipe-number">#41</div>
+                    <h3 class="recipe-title">Roasted Fennel Italian Sausage Stuffing</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="potato chickpea curry" data-page="42">
+                <a href="0042-potato-chickpea-curry.html" class="recipe-link">
+                    <div class="recipe-number">#42</div>
+                    <h3 class="recipe-title">Potato Chickpea Curry</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="lemon chicken kale orzo soup" data-page="43">
+                <a href="0043-lemon-chicken-kale-orzo-soup.html" class="recipe-link">
+                    <div class="recipe-number">#43</div>
+                    <h3 class="recipe-title">Lemon Chicken Kale Orzo Soup</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="spicy pork noodles w scallions bok choy" data-page="44">
+                <a href="0044-spicy-pork-noodles-w-scallions-bok-choy.html" class="recipe-link">
+                    <div class="recipe-number">#44</div>
+                    <h3 class="recipe-title">Spicy Pork Noodles W Scallions Bok Choy</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="crunchy cauliflower bites w curry lime aioli" data-page="45">
+                <a href="0045-crunchy-cauliflower-bites-w-curry-lime-aioli.html" class="recipe-link">
+                    <div class="recipe-number">#45</div>
+                    <h3 class="recipe-title">Crunchy Cauliflower Bites W Curry Lime Aioli</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="mashed cauliflower yukon gold" data-page="46">
+                <a href="0046-mashed-cauliflower-yukon-gold.html" class="recipe-link">
+                    <div class="recipe-number">#46</div>
+                    <h3 class="recipe-title">Mashed Cauliflower Yukon Gold</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="linguine w creamy mushroom sauce" data-page="47">
+                <a href="0047-linguine-w-creamy-mushroom-sauce.html" class="recipe-link">
+                    <div class="recipe-number">#47</div>
+                    <h3 class="recipe-title">Linguine W Creamy Mushroom Sauce</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="butternut squash soup wapple grilled cheese sandwiches" data-page="48">
+                <a href="0048-butternut-squash-soup-wapple-grilled-cheese-sandwiches.html" class="recipe-link">
+                    <div class="recipe-number">#48</div>
+                    <h3 class="recipe-title">Butternut Squash Soup Wapple Grilled Cheese Sandwiches</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="golden milk poached chicken chickpea salad w broccoli" data-page="49">
+                <a href="0049-golden-milk-poached-chicken-chickpea-salad-w-broccoli.html" class="recipe-link">
+                    <div class="recipe-number">#49</div>
+                    <h3 class="recipe-title">Golden Milk Poached Chicken Chickpea Salad W Broccoli</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="chickpea dumplings in curried tomato sauce" data-page="50">
+                <a href="0050-chickpea-dumplings-in-curried-tomato-sauce.html" class="recipe-link">
+                    <div class="recipe-number">#50</div>
+                    <h3 class="recipe-title">Chickpea Dumplings In Curried Tomato Sauce</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="penne w sausage squash chard" data-page="51">
+                <a href="0051-penne-w-sausage-squash-chard.html" class="recipe-link">
+                    <div class="recipe-number">#51</div>
+                    <h3 class="recipe-title">Penne W Sausage Squash Chard</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="salt vinegar chicken brussels sprouts" data-page="52">
+                <a href="0052-salt-vinegar-chicken-brussels-sprouts.html" class="recipe-link">
+                    <div class="recipe-number">#52</div>
+                    <h3 class="recipe-title">Salt Vinegar Chicken Brussels Sprouts</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="spaghetti squash casserole" data-page="53">
+                <a href="0053-spaghetti-squash-casserole.html" class="recipe-link">
+                    <div class="recipe-number">#53</div>
+                    <h3 class="recipe-title">Spaghetti Squash Casserole</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="chicken tagine with apricots olives" data-page="54">
+                <a href="0054-chicken-tagine-with-apricots-olives.html" class="recipe-link">
+                    <div class="recipe-number">#54</div>
+                    <h3 class="recipe-title">Chicken Tagine With Apricots Olives</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="cauliflower nachos with chicken" data-page="55">
+                <a href="0055-cauliflower-nachos-with-chicken.html" class="recipe-link">
+                    <div class="recipe-number">#55</div>
+                    <h3 class="recipe-title">Cauliflower Nachos With Chicken</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="antipasto smothered chicken" data-page="56">
+                <a href="0056-antipasto-smothered-chicken.html" class="recipe-link">
+                    <div class="recipe-number">#56</div>
+                    <h3 class="recipe-title">Antipasto Smothered Chicken</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="chile lime cauliflower quesadillas" data-page="57">
+                <a href="0057-chile-lime-cauliflower-quesadillas.html" class="recipe-link">
+                    <div class="recipe-number">#57</div>
+                    <h3 class="recipe-title">Chile Lime Cauliflower Quesadillas</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="skillet beef veggie potpie w buttermilk biscuits" data-page="58">
+                <a href="0058-skillet-beef-veggie-potpie-w-buttermilk-biscuits.html" class="recipe-link">
+                    <div class="recipe-number">#58</div>
+                    <h3 class="recipe-title">Skillet Beef Veggie Potpie W Buttermilk Biscuits</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="cajun pork chops w asparagus cheesy polenta" data-page="59">
+                <a href="0059-cajun-pork-chops-w-asparagus-cheesy-polenta.html" class="recipe-link">
+                    <div class="recipe-number">#59</div>
+                    <h3 class="recipe-title">Cajun Pork Chops W Asparagus Cheesy Polenta</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="muffin pan egg bites" data-page="60">
+                <a href="0060-muffin-pan-egg-bites.html" class="recipe-link">
+                    <div class="recipe-number">#60</div>
+                    <h3 class="recipe-title">Muffin Pan Egg Bites</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="skillet chili mac" data-page="61">
+                <a href="0061-skillet-chili-mac.html" class="recipe-link">
+                    <div class="recipe-number">#61</div>
+                    <h3 class="recipe-title">Skillet Chili Mac</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="herb roasted drumsticks w potatoes" data-page="62">
+                <a href="0062-herb-roasted-drumsticks-w-potatoes.html" class="recipe-link">
+                    <div class="recipe-number">#62</div>
+                    <h3 class="recipe-title">Herb Roasted Drumsticks W Potatoes</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="crispy ravioli w red pepper mushroom bolognese" data-page="63">
+                <a href="0063-crispy-ravioli-w-red-pepper-mushroom-bolognese.html" class="recipe-link">
+                    <div class="recipe-number">#63</div>
+                    <h3 class="recipe-title">Crispy Ravioli W Red Pepper Mushroom Bolognese</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="scallion ginger beef broccoli" data-page="64">
+                <a href="0064-scallion-ginger-beef-broccoli.html" class="recipe-link">
+                    <div class="recipe-number">#64</div>
+                    <h3 class="recipe-title">Scallion Ginger Beef Broccoli</h3>
+                </a>
+            </div>
+            <div class="recipe-card" data-title="herbed ricotta mini quiches" data-page="65">
+                <a href="0065-herbed-ricotta-mini-quiches.html" class="recipe-link">
+                    <div class="recipe-number">#65</div>
+                    <h3 class="recipe-title">Herbed Ricotta Mini Quiches</h3>
                 </a>
             </div>
         </div>
         
-        <div id="all-recipes">
-            <h2>All Recipes</h2>
-            <p><em>Recipe list will be populated here...</em></p>
+        <div id="noResults" class="no-results hidden">
+            <p>No recipes found matching your search.</p>
         </div>
     </div>
     
     <script>
-        // Simple search functionality would go here
-        console.log('Recipe collection loaded with 57 recipes');
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        const recipeGrid = document.getElementById('recipeGrid');
+        const noResults = document.getElementById('noResults');
+        const recipeCards = document.querySelectorAll('.recipe-card');
+        
+        function performSearch() {
+            const searchTerm = searchBox.value.toLowerCase().trim();
+            let visibleCount = 0;
+            
+            recipeCards.forEach(card => {
+                const title = card.dataset.title;
+                const isMatch = title.includes(searchTerm);
+                
+                if (isMatch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Show/hide no results message
+            if (visibleCount === 0 && searchTerm !== '') {
+                noResults.classList.remove('hidden');
+                recipeGrid.classList.add('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                recipeGrid.classList.remove('hidden');
+            }
+        }
+        
+        // Search on input
+        searchBox.addEventListener('input', performSearch);
+        
+        // Clear search on ESC
+        searchBox.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                searchBox.value = '';
+                performSearch();
+            }
+        });
+        
+        console.log('Alicia\'s Recipe collection loaded with 49 authentic recipes');
     </script>
 </body>
 </html>
