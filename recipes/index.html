@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alicia's Recipe Collection - 108 Recipes</title>
+    <title>Alicia's Recipe Collection - 126 Recipes</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         .search-container {
@@ -35,32 +35,33 @@
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 1.5rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .recipe-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-color: #3182ce;
-        }
-        .recipe-link {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none;
             color: inherit;
         }
+        .recipe-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-decoration: none;
+        }
         .recipe-number {
+            font-size: 0.85rem;
             color: #718096;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
             font-weight: 600;
+            margin-bottom: 0.5rem;
         }
         .recipe-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
             color: #2d3748;
-            margin: 0;
-            font-size: 1.1rem;
-            line-height: 1.4;
+            line-height: 1.3;
         }
-        .recipe-card:hover .recipe-title {
-            color: #3182ce;
+        .recipe-description {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
         .stats {
             text-align: center;
@@ -68,754 +69,731 @@
             padding: 1.5rem;
             background: #f7fafc;
             border-radius: 12px;
+            color: #4a5568;
         }
-        .count {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #3182ce;
-            margin-bottom: 0.5rem;
-        }
-        .milestone {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 12px;
-            font-weight: bold;
-        }
-        .hidden {
-            display: none;
-        }
-        .no-results {
+        .filter-tags {
+            margin: 1rem 0 2rem;
             text-align: center;
-            padding: 3rem;
-            color: #718096;
-            font-size: 1.1rem;
+        }
+        .filter-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            background: #e2e8f0;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .filter-tag:hover, .filter-tag.active {
+            background: #3182ce;
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="nav">
         <a href="../index.html">🏠 Home</a>
-        <a href="#search">🔍 Search</a>
+        <a href="#" class="active">📖 All Recipes</a>
     </div>
-    
     <div class="container">
         <h1>🍳 Alicia's Recipe Collection</h1>
         
         <div class="stats">
-            <div class="count">108</div>
-            <p>Authentic recipes from Alicia's cookbook</p>
-            <div class="milestone">🎉 100+ Recipe Milestone Achieved! 🎉</div>
+            <h2>126 Recipes Available</h2>
+            <p>A complete digital collection from our family cookbook</p>
         </div>
         
         <div class="search-container">
-            <input type="text" id="searchBox" class="search-box" 
-                   placeholder="Search recipes by name or ingredient..." 
-                   autocomplete="off">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search recipes..." />
         </div>
         
-        <div id="recipeGrid" class="recipe-grid">
-            <div class="recipe-card" data-title="skillet chicken in creamy sun dried tomato sauce" data-page="4">
-                <a href="0004-skillet-chicken-in-creamy-sun-dried-tomato-sauce.html" class="recipe-link">
-                    <div class="recipe-number">#4</div>
-                    <h3 class="recipe-title">Skillet Chicken In Creamy Sun Dried Tomato Sauce</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chicken bacon ranch pizza" data-page="5">
-                <a href="0005-chicken-bacon-ranch-pizza.html" class="recipe-link">
-                    <div class="recipe-number">#5</div>
-                    <h3 class="recipe-title">Chicken Bacon Ranch Pizza</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chicken bacon ranch pizza page 2" data-page="6">
-                <a href="0006-chicken-bacon-ranch-pizza-page-2.html" class="recipe-link">
-                    <div class="recipe-number">#6</div>
-                    <h3 class="recipe-title">Chicken Bacon Ranch Pizza Page 2</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="drop biscuits instructions page" data-page="8">
-                <a href="0008-drop-biscuits-instructions-page.html" class="recipe-link">
-                    <div class="recipe-number">#8</div>
-                    <h3 class="recipe-title">Drop Biscuits Instructions Page</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="meatza supreme" data-page="9">
-                <a href="0009-meatza-supreme.html" class="recipe-link">
-                    <div class="recipe-number">#9</div>
-                    <h3 class="recipe-title">Meatza Supreme</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="meatza supreme" data-page="10">
-                <a href="0010-meatza-supreme.html" class="recipe-link">
-                    <div class="recipe-number">#10</div>
-                    <h3 class="recipe-title">Meatza Supreme</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="how to cook bacon in the oven easy method" data-page="13">
-                <a href="0013-how-to-cook-bacon-in-the-oven-easy-method.html" class="recipe-link">
-                    <div class="recipe-number">#13</div>
-                    <h3 class="recipe-title">How To Cook Bacon In The Oven Easy Method</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="healthy broccoli cheese soup tips page" data-page="18">
-                <a href="0018-healthy-broccoli-cheese-soup-tips-page.html" class="recipe-link">
-                    <div class="recipe-number">#18</div>
-                    <h3 class="recipe-title">Healthy Broccoli Cheese Soup Tips Page</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="broccoli cheese soup low carb gluten free   thickening tips" data-page="19">
-                <a href="0019-broccoli-cheese-soup-low-carb-gluten-free---thickening-tips.html" class="recipe-link">
-                    <div class="recipe-number">#19</div>
-                    <h3 class="recipe-title">Broccoli Cheese Soup Low Carb Gluten Free   Thickening Tips</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="broccoli cheese soup low carb gluten free   preparation tips" data-page="20">
-                <a href="0020-broccoli-cheese-soup-low-carb-gluten-free---preparation-tips.html" class="recipe-link">
-                    <div class="recipe-number">#20</div>
-                    <h3 class="recipe-title">Broccoli Cheese Soup Low Carb Gluten Free   Preparation Tips</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="spaghetti squash" data-page="23">
-                <a href="0023-spaghetti-squash.html" class="recipe-link">
-                    <div class="recipe-number">#23</div>
-                    <h3 class="recipe-title">Spaghetti Squash</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="spaghetti squash with meat and mozzarella final steps" data-page="24">
-                <a href="0024-spaghetti-squash-with-meat-and-mozzarella-final-steps.html" class="recipe-link">
-                    <div class="recipe-number">#24</div>
-                    <h3 class="recipe-title">Spaghetti Squash With Meat And Mozzarella Final Steps</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="ham cheddar cauliflower chowder" data-page="26">
-                <a href="0026-ham-cheddar-cauliflower-chowder.html" class="recipe-link">
-                    <div class="recipe-number">#26</div>
-                    <h3 class="recipe-title">Ham Cheddar Cauliflower Chowder</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="low carb twice baked cauliflower" data-page="29">
-                <a href="0029-low-carb-twice-baked-cauliflower.html" class="recipe-link">
-                    <div class="recipe-number">#29</div>
-                    <h3 class="recipe-title">Low Carb Twice Baked Cauliflower</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="mozzarella stuffed italian meatloaf minis" data-page="31">
-                <a href="0031-mozzarella-stuffed-italian-meatloaf-minis.html" class="recipe-link">
-                    <div class="recipe-number">#31</div>
-                    <h3 class="recipe-title">Mozzarella Stuffed Italian Meatloaf Minis</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chicken tetrazzini" data-page="32">
-                <a href="0032-chicken-tetrazzini.html" class="recipe-link">
-                    <div class="recipe-number">#32</div>
-                    <h3 class="recipe-title">Chicken Tetrazzini</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="sausage spiked meatloaves" data-page="33">
-                <a href="0033-sausage-spiked-meatloaves.html" class="recipe-link">
-                    <div class="recipe-number">#33</div>
-                    <h3 class="recipe-title">Sausage Spiked Meatloaves</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="1 2 brie three creative brie appetizers" data-page="34">
-                <a href="0034-1-2-brie-three-creative-brie-appetizers.html" class="recipe-link">
-                    <div class="recipe-number">#34</div>
-                    <h3 class="recipe-title">1 2 Brie Three Creative Brie Appetizers</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="double chocolate avocado muffins" data-page="35">
-                <a href="0035-double-chocolate-avocado-muffins.html" class="recipe-link">
-                    <div class="recipe-number">#35</div>
-                    <h3 class="recipe-title">Double Chocolate Avocado Muffins</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="crispy smashed russets with green horseradish sauce" data-page="36">
-                <a href="0036-crispy-smashed-russets-with-green-horseradish-sauce.html" class="recipe-link">
-                    <div class="recipe-number">#36</div>
-                    <h3 class="recipe-title">Crispy Smashed Russets With Green Horseradish Sauce</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="potato artichoke gratin" data-page="37">
-                <a href="0037-potato-artichoke-gratin.html" class="recipe-link">
-                    <div class="recipe-number">#37</div>
-                    <h3 class="recipe-title">Potato Artichoke Gratin</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="whipped russet potatoes with sage brown butter" data-page="38">
-                <a href="0038-whipped-russet-potatoes-with-sage-brown-butter.html" class="recipe-link">
-                    <div class="recipe-number">#38</div>
-                    <h3 class="recipe-title">Whipped Russet Potatoes With Sage Brown Butter</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="potato feta mini frittatas" data-page="39">
-                <a href="0039-potato-feta-mini-frittatas.html" class="recipe-link">
-                    <div class="recipe-number">#39</div>
-                    <h3 class="recipe-title">Potato Feta Mini Frittatas</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised brisket with dried fruit" data-page="40">
-                <a href="0040-braised-brisket-with-dried-fruit.html" class="recipe-link">
-                    <div class="recipe-number">#40</div>
-                    <h3 class="recipe-title">Braised Brisket With Dried Fruit</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="roasted fennel italian sausage stuffing" data-page="41">
-                <a href="0041-roasted-fennel-italian-sausage-stuffing.html" class="recipe-link">
-                    <div class="recipe-number">#41</div>
-                    <h3 class="recipe-title">Roasted Fennel Italian Sausage Stuffing</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="potato chickpea curry" data-page="42">
-                <a href="0042-potato-chickpea-curry.html" class="recipe-link">
-                    <div class="recipe-number">#42</div>
-                    <h3 class="recipe-title">Potato Chickpea Curry</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="lemon chicken kale orzo soup" data-page="43">
-                <a href="0043-lemon-chicken-kale-orzo-soup.html" class="recipe-link">
-                    <div class="recipe-number">#43</div>
-                    <h3 class="recipe-title">Lemon Chicken Kale Orzo Soup</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="spicy pork noodles with scallions bok choy" data-page="44">
-                <a href="0044-spicy-pork-noodles-w-scallions-bok-choy.html" class="recipe-link">
-                    <div class="recipe-number">#44</div>
-                    <h3 class="recipe-title">Spicy Pork Noodles with Scallions Bok Choy</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="crunchy cauliflower bites with curry lime aioli" data-page="45">
-                <a href="0045-crunchy-cauliflower-bites-w-curry-lime-aioli.html" class="recipe-link">
-                    <div class="recipe-number">#45</div>
-                    <h3 class="recipe-title">Crunchy Cauliflower Bites with Curry Lime Aioli</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="mashed cauliflower yukon gold" data-page="46">
-                <a href="0046-mashed-cauliflower-yukon-gold.html" class="recipe-link">
-                    <div class="recipe-number">#46</div>
-                    <h3 class="recipe-title">Mashed Cauliflower Yukon Gold</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="linguine with creamy mushroom sauce" data-page="47">
-                <a href="0047-linguine-w-creamy-mushroom-sauce.html" class="recipe-link">
-                    <div class="recipe-number">#47</div>
-                    <h3 class="recipe-title">Linguine with Creamy Mushroom Sauce</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="butternut squash soup wapple grilled cheese sandwiches" data-page="48">
-                <a href="0048-butternut-squash-soup-wapple-grilled-cheese-sandwiches.html" class="recipe-link">
-                    <div class="recipe-number">#48</div>
-                    <h3 class="recipe-title">Butternut Squash Soup Wapple Grilled Cheese Sandwiches</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="golden milk poached chicken chickpea salad with broccoli" data-page="49">
-                <a href="0049-golden-milk-poached-chicken-chickpea-salad-w-broccoli.html" class="recipe-link">
-                    <div class="recipe-number">#49</div>
-                    <h3 class="recipe-title">Golden Milk Poached Chicken Chickpea Salad with Broccoli</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chickpea dumplings in curried tomato sauce" data-page="50">
-                <a href="0050-chickpea-dumplings-in-curried-tomato-sauce.html" class="recipe-link">
-                    <div class="recipe-number">#50</div>
-                    <h3 class="recipe-title">Chickpea Dumplings In Curried Tomato Sauce</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="penne with sausage squash chard" data-page="51">
-                <a href="0051-penne-w-sausage-squash-chard.html" class="recipe-link">
-                    <div class="recipe-number">#51</div>
-                    <h3 class="recipe-title">Penne with Sausage Squash Chard</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="salt vinegar chicken brusselss sprouts" data-page="52">
-                <a href="0052-salt-vinegar-chicken-brussels-sprouts.html" class="recipe-link">
-                    <div class="recipe-number">#52</div>
-                    <h3 class="recipe-title">Salt Vinegar Chicken Brusselss Sprouts</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="spaghetti squash casserole" data-page="53">
-                <a href="0053-spaghetti-squash-casserole.html" class="recipe-link">
-                    <div class="recipe-number">#53</div>
-                    <h3 class="recipe-title">Spaghetti Squash Casserole</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chicken tagine with apricots olives" data-page="54">
-                <a href="0054-chicken-tagine-with-apricots-olives.html" class="recipe-link">
-                    <div class="recipe-number">#54</div>
-                    <h3 class="recipe-title">Chicken Tagine With Apricots Olives</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cauliflower nachos with chicken" data-page="55">
-                <a href="0055-cauliflower-nachos-with-chicken.html" class="recipe-link">
-                    <div class="recipe-number">#55</div>
-                    <h3 class="recipe-title">Cauliflower Nachos With Chicken</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="antipasto smothered chicken" data-page="56">
-                <a href="0056-antipasto-smothered-chicken.html" class="recipe-link">
-                    <div class="recipe-number">#56</div>
-                    <h3 class="recipe-title">Antipasto Smothered Chicken</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chile lime cauliflower quesadillas" data-page="57">
-                <a href="0057-chile-lime-cauliflower-quesadillas.html" class="recipe-link">
-                    <div class="recipe-number">#57</div>
-                    <h3 class="recipe-title">Chile Lime Cauliflower Quesadillas</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="skillet beef veggie potpie with buttermilk biscuits" data-page="58">
-                <a href="0058-skillet-beef-veggie-potpie-w-buttermilk-biscuits.html" class="recipe-link">
-                    <div class="recipe-number">#58</div>
-                    <h3 class="recipe-title">Skillet Beef Veggie Potpie with Buttermilk Biscuits</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cajun pork chops with asparagus cheesy polenta" data-page="59">
-                <a href="0059-cajun-pork-chops-w-asparagus-cheesy-polenta.html" class="recipe-link">
-                    <div class="recipe-number">#59</div>
-                    <h3 class="recipe-title">Cajun Pork Chops with Asparagus Cheesy Polenta</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="muffin pan egg bites" data-page="60">
-                <a href="0060-muffin-pan-egg-bites.html" class="recipe-link">
-                    <div class="recipe-number">#60</div>
-                    <h3 class="recipe-title">Muffin Pan Egg Bites</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="skillet chili mac" data-page="61">
-                <a href="0061-skillet-chili-mac.html" class="recipe-link">
-                    <div class="recipe-number">#61</div>
-                    <h3 class="recipe-title">Skillet Chili Mac</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="herb roasted drumsticks with potatoes" data-page="62">
-                <a href="0062-herb-roasted-drumsticks-w-potatoes.html" class="recipe-link">
-                    <div class="recipe-number">#62</div>
-                    <h3 class="recipe-title">Herb Roasted Drumsticks with Potatoes</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="crispy ravioli with red pepper mushroom bolognese" data-page="63">
-                <a href="0063-crispy-ravioli-w-red-pepper-mushroom-bolognese.html" class="recipe-link">
-                    <div class="recipe-number">#63</div>
-                    <h3 class="recipe-title">Crispy Ravioli with Red Pepper Mushroom Bolognese</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="scallion ginger beef broccoli" data-page="64">
-                <a href="0064-scallion-ginger-beef-broccoli.html" class="recipe-link">
-                    <div class="recipe-number">#64</div>
-                    <h3 class="recipe-title">Scallion Ginger Beef Broccoli</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="herbed ricotta mini quiches" data-page="65">
-                <a href="0065-herbed-ricotta-mini-quiches.html" class="recipe-link">
-                    <div class="recipe-number">#65</div>
-                    <h3 class="recipe-title">Herbed Ricotta Mini Quiches</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cauliflower tikka masala with chickpeas" data-page="66">
-                <a href="0066-cauliflower-tikka-masala-with-chickpeas.html" class="recipe-link">
-                    <div class="recipe-number">#66</div>
-                    <h3 class="recipe-title">Cauliflower Tikka Masala With Chickpeas</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="peanut butter chocolate chip skillet cookie" data-page="67">
-                <a href="0067-peanut-butter-chocolate-chip-skillet-cookie.html" class="recipe-link">
-                    <div class="recipe-number">#67</div>
-                    <h3 class="recipe-title">Peanut Butter Chocolate Chip Skillet Cookie</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="one pot mac cheese with cauliflower brusselss sprouts" data-page="68">
-                <a href="0068-one-pot-mac-cheese-with-cauliflower-brussels-sprouts.html" class="recipe-link">
-                    <div class="recipe-number">#68</div>
-                    <h3 class="recipe-title">One Pot Mac Cheese With Cauliflower Brusselss Sprouts</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cheesy beef enchilada casserole" data-page="69">
-                <a href="0069-cheesy-beef-enchilada-casserole.html" class="recipe-link">
-                    <div class="recipe-number">#69</div>
-                    <h3 class="recipe-title">Cheesy Beef Enchilada Casserole</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="pesto chicken cauliflower pizza antipasto salad" data-page="70">
-                <a href="0070-pesto-chicken-cauliflower-pizza-antipasto-salad.html" class="recipe-link">
-                    <div class="recipe-number">#70</div>
-                    <h3 class="recipe-title">Pesto Chicken Cauliflower Pizza Antipasto Salad</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chicken enchilada soup" data-page="71">
-                <a href="0071-chicken-enchilada-soup.html" class="recipe-link">
-                    <div class="recipe-number">#71</div>
-                    <h3 class="recipe-title">Chicken Enchilada Soup</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chicken potpie soup with tater tot topping" data-page="71">
-                <a href="0071-chicken-potpie-soup-with-tater-tot-topping.html" class="recipe-link">
-                    <div class="recipe-number">#71</div>
-                    <h3 class="recipe-title">Chicken Potpie Soup With Tater Tot Topping</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chicken potpie soup with tater tot topping" data-page="72">
-                <a href="0072-chicken-potpie-soup-with-tater-tot-topping.html" class="recipe-link">
-                    <div class="recipe-number">#72</div>
-                    <h3 class="recipe-title">Chicken Potpie Soup With Tater Tot Topping</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="kimchi pork burgers" data-page="73">
-                <a href="0073-kimchi-pork-burgers.html" class="recipe-link">
-                    <div class="recipe-number">#73</div>
-                    <h3 class="recipe-title">Kimchi Pork Burgers</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cheesy zucchini casserole" data-page="74">
-                <a href="0074-cheesy-zucchini-casserole.html" class="recipe-link">
-                    <div class="recipe-number">#74</div>
-                    <h3 class="recipe-title">Cheesy Zucchini Casserole</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cheesy zucchini casserole continued" data-page="75">
-                <a href="0075-cheesy-zucchini-casserole-continued.html" class="recipe-link">
-                    <div class="recipe-number">#75</div>
-                    <h3 class="recipe-title">Cheesy Zucchini Casserole Continued</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cheesy zucchini casserole" data-page="76">
-                <a href="0076-cheesy-zucchini-casserole.html" class="recipe-link">
-                    <div class="recipe-number">#76</div>
-                    <h3 class="recipe-title">Cheesy Zucchini Casserole</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cheesy zucchini casserole instructions" data-page="77">
-                <a href="0077-cheesy-zucchini-casserole-instructions.html" class="recipe-link">
-                    <div class="recipe-number">#77</div>
-                    <h3 class="recipe-title">Cheesy Zucchini Casserole Instructions</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto taco pie" data-page="78">
-                <a href="0078-keto-taco-pie.html" class="recipe-link">
-                    <div class="recipe-number">#78</div>
-                    <h3 class="recipe-title">Keto Taco Pie</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto taco pie recipe" data-page="79">
-                <a href="0079-keto-taco-pie-recipe.html" class="recipe-link">
-                    <div class="recipe-number">#79</div>
-                    <h3 class="recipe-title">Keto Taco Pie Recipe</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="fiesta turkey pie" data-page="80">
-                <a href="0080-fiesta-turkey-pie.html" class="recipe-link">
-                    <div class="recipe-number">#80</div>
-                    <h3 class="recipe-title">Fiesta Turkey Pie</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="recipe notes page" data-page="81">
-                <a href="0081-recipe-notes-page.html" class="recipe-link">
-                    <div class="recipe-number">#81</div>
-                    <h3 class="recipe-title">Recipe Notes Page</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto breakfast pinwheels with bacon spinach and feta" data-page="82">
-                <a href="0082-keto-breakfast-pinwheels-with-bacon-spinach-and-feta.html" class="recipe-link">
-                    <div class="recipe-number">#82</div>
-                    <h3 class="recipe-title">Keto Breakfast Pinwheels With Bacon Spinach And Feta</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto breakfast pinwheels with bacon spinach and feta" data-page="83">
-                <a href="0083-keto-breakfast-pinwheels-with-bacon-spinach-and-feta.html" class="recipe-link">
-                    <div class="recipe-number">#83</div>
-                    <h3 class="recipe-title">Keto Breakfast Pinwheels With Bacon Spinach And Feta</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="oven roasted chicken" data-page="84">
-                <a href="0084-oven-roasted-chicken.html" class="recipe-link">
-                    <div class="recipe-number">#84</div>
-                    <h3 class="recipe-title">Oven Roasted Chicken</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="oven roasted chicken" data-page="85">
-                <a href="0085-oven-roasted-chicken.html" class="recipe-link">
-                    <div class="recipe-number">#85</div>
-                    <h3 class="recipe-title">Oven Roasted Chicken</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="mozzarella stuffed italian meatloaf minis" data-page="86">
-                <a href="0086-mozzarella-stuffed-italian-meatloaf-minis.html" class="recipe-link">
-                    <div class="recipe-number">#86</div>
-                    <h3 class="recipe-title">Mozzarella Stuffed Italian Meatloaf Minis</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cabbage soup with chicken dumplings" data-page="87">
-                <a href="0087-cabbage-soup-with-chicken-dumplings.html" class="recipe-link">
-                    <div class="recipe-number">#87</div>
-                    <h3 class="recipe-title">Cabbage Soup With Chicken Dumplings</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="low carb cauliflower cheese" data-page="89">
-                <a href="0089-low-carb-cauliflower-cheese.html" class="recipe-link">
-                    <div class="recipe-number">#89</div>
-                    <h3 class="recipe-title">Low Carb Cauliflower Cheese</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="bbq pulled pork with gravy" data-page="90">
-                <a href="0090-bbq-pulled-pork-with-gravy.html" class="recipe-link">
-                    <div class="recipe-number">#90</div>
-                    <h3 class="recipe-title">Bbq Pulled Pork With Gravy</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="loaded broccoli casserole" data-page="91">
-                <a href="0091-loaded-broccoli-casserole.html" class="recipe-link">
-                    <div class="recipe-number">#91</div>
-                    <h3 class="recipe-title">Loaded Broccoli Casserole</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="easy keto pizza roll ups" data-page="92">
-                <a href="0092-easy-keto-pizza-roll-ups.html" class="recipe-link">
-                    <div class="recipe-number">#92</div>
-                    <h3 class="recipe-title">Easy Keto Pizza Roll Ups</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="lamb shanks braised" data-page="96">
-                <a href="0096-lamb-shanks-braised.html" class="recipe-link">
-                    <div class="recipe-number">#96</div>
-                    <h3 class="recipe-title">Lamb Shanks Braised</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="97">
-                <a href="0097-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#97</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="98">
-                <a href="0098-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#98</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="99">
-                <a href="0099-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#99</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="100">
-                <a href="0100-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#100</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="101">
-                <a href="0101-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#101</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="102">
-                <a href="0102-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#102</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="103">
-                <a href="0103-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#103</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="braised lamb shanks" data-page="104">
-                <a href="0104-braised-lamb-shanks.html" class="recipe-link">
-                    <div class="recipe-number">#104</div>
-                    <h3 class="recipe-title">Braised Lamb Shanks</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto chocolate brownie" data-page="105">
-                <a href="0105-keto-chocolate-brownie.html" class="recipe-link">
-                    <div class="recipe-number">#105</div>
-                    <h3 class="recipe-title">Keto Chocolate Brownie</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto chocolate brownie instructions" data-page="106">
-                <a href="0106-keto-chocolate-brownie-instructions.html" class="recipe-link">
-                    <div class="recipe-number">#106</div>
-                    <h3 class="recipe-title">Keto Chocolate Brownie Instructions</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto no bake swiss cocoa cookies" data-page="107">
-                <a href="0107-keto-no-bake-swiss-cocoa-cookies.html" class="recipe-link">
-                    <div class="recipe-number">#107</div>
-                    <h3 class="recipe-title">Keto No Bake Swiss Cocoa Cookies</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="low carb keto zuppa toscana soup recipe" data-page="108">
-                <a href="0108-low-carb-keto-zuppa-toscana-soup-recipe.html" class="recipe-link">
-                    <div class="recipe-number">#108</div>
-                    <h3 class="recipe-title">Low Carb Keto Zuppa Toscana Soup Recipe</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="recipe notes" data-page="109">
-                <a href="0109-recipe-notes.html" class="recipe-link">
-                    <div class="recipe-number">#109</div>
-                    <h3 class="recipe-title">Recipe Notes</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="recipe notes" data-page="110">
-                <a href="0110-recipe-notes.html" class="recipe-link">
-                    <div class="recipe-number">#110</div>
-                    <h3 class="recipe-title">Recipe Notes</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="zucchini bread" data-page="111">
-                <a href="0111-zucchini-bread.html" class="recipe-link">
-                    <div class="recipe-number">#111</div>
-                    <h3 class="recipe-title">Zucchini Bread</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="everything bagels" data-page="112">
-                <a href="0112-everything-bagels.html" class="recipe-link">
-                    <div class="recipe-number">#112</div>
-                    <h3 class="recipe-title">Everything Bagels</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="roasted leg of lamb" data-page="113">
-                <a href="0113-roasted-leg-of-lamb.html" class="recipe-link">
-                    <div class="recipe-number">#113</div>
-                    <h3 class="recipe-title">Roasted Leg Of Lamb</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="mini hasselback potatoes" data-page="114">
-                <a href="0114-mini-hasselback-potatoes.html" class="recipe-link">
-                    <div class="recipe-number">#114</div>
-                    <h3 class="recipe-title">Mini Hasselback Potatoes</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="brussels sprouts gratin" data-page="117">
-                <a href="0117-brussel-sprouts-gratin.html" class="recipe-link">
-                    <div class="recipe-number">#117</div>
-                    <h3 class="recipe-title">Brussels Sprouts Gratin</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cajun mustard creamed cabbage" data-page="119">
-                <a href="0119-cajun-mustard-creamed-cabbage.html" class="recipe-link">
-                    <div class="recipe-number">#119</div>
-                    <h3 class="recipe-title">Cajun Mustard Creamed Cabbage</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="chocolate cream pie ii" data-page="124">
-                <a href="0124-chocolate-cream-pie-ii.html" class="recipe-link">
-                    <div class="recipe-number">#124</div>
-                    <h3 class="recipe-title">Chocolate Cream Pie Ii</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="low carb creamy crockpot chicken broccoli and cauliflower" data-page="130">
-                <a href="0130-low-carb-creamy-crockpot-chicken-broccoli-and-cauliflower.html" class="recipe-link">
-                    <div class="recipe-number">#130</div>
-                    <h3 class="recipe-title">Low Carb Creamy Crockpot Chicken Broccoli And Cauliflower</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="low carb key lime cheesecake" data-page="131">
-                <a href="0131-low-carb-key-lime-cheesecake.html" class="recipe-link">
-                    <div class="recipe-number">#131</div>
-                    <h3 class="recipe-title">Low Carb Key Lime Cheesecake</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="split pea soup" data-page="134">
-                <a href="0134-split-pea-soup.html" class="recipe-link">
-                    <div class="recipe-number">#134</div>
-                    <h3 class="recipe-title">Split Pea Soup</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="foolproof rib roast" data-page="135">
-                <a href="0135-foolproof-rib-roast.html" class="recipe-link">
-                    <div class="recipe-number">#135</div>
-                    <h3 class="recipe-title">Foolproof Rib Roast</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="shredded red cabbage carrot and mint salad" data-page="136">
-                <a href="0136-shredded-red-cabbage-carrot-and-mint-salad.html" class="recipe-link">
-                    <div class="recipe-number">#136</div>
-                    <h3 class="recipe-title">Shredded Red Cabbage Carrot And Mint Salad</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="cheesy crustless quiche with broccoli and ham" data-page="141">
-                <a href="0141-cheesy-crustless-quiche-with-broccoli-and-ham.html" class="recipe-link">
-                    <div class="recipe-number">#141</div>
-                    <h3 class="recipe-title">Cheesy Crustless Quiche With Broccoli And Ham</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="broccoli cheddar corn muffins" data-page="142">
-                <a href="0142-broccoli-cheddar-corn-muffins.html" class="recipe-link">
-                    <div class="recipe-number">#142</div>
-                    <h3 class="recipe-title">Broccoli Cheddar Corn Muffins</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="keto blt chaffle sandwich" data-page="143">
-                <a href="0143-keto-blt-chaffle-sandwich.html" class="recipe-link">
-                    <div class="recipe-number">#143</div>
-                    <h3 class="recipe-title">Keto BLT Chaffle Sandwich</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="instant pot leg of lamb" data-page="144">
-                <a href="0144-instant-pot-leg-of-lamb.html" class="recipe-link">
-                    <div class="recipe-number">#144</div>
-                    <h3 class="recipe-title">Instant Pot Leg Of Lamb</h3>
-                </a>
-            </div>
-            <div class="recipe-card" data-title="courtney's low carb crack slaw" data-page="148">
-                <a href="0148-courtneys-low-carb-crack-slaw.html" class="recipe-link">
-                    <div class="recipe-number">#148</div>
-                    <h3 class="recipe-title">Courtney's Low Carb Crack Slaw</h3>
-                </a>
-            </div>
+        <div class="filter-tags">
+            <span class="filter-tag active" data-filter="all">All Recipes</span>
+            <span class="filter-tag" data-filter="chicken">Chicken</span>
+            <span class="filter-tag" data-filter="beef">Beef</span>
+            <span class="filter-tag" data-filter="pork">Pork</span>
+            <span class="filter-tag" data-filter="soup">Soup</span>
+            <span class="filter-tag" data-filter="pasta">Pasta</span>
+            <span class="filter-tag" data-filter="keto">Keto</span>
+            <span class="filter-tag" data-filter="dessert">Dessert</span>
         </div>
         
-        <div id="noResults" class="no-results hidden">
-            <p>No recipes found matching your search.</p>
+        <div class="recipe-grid" id="recipeGrid">
+            <a href="./0004-skillet-chicken-in-creamy-sun-dried-tomato-sauce.html" class="recipe-card" data-title="skillet chicken in creamy sun dried tomato sauce" data-desc="this tasty 30 minute skillet chicken in creamy sun dried tomato sauce recipe has bold and rich garlic, parmesan, and her...">
+                <div class="recipe-number">Recipe #0004</div>
+                <h3 class="recipe-title">Skillet Chicken in Creamy Sun Dried Tomato Sauce</h3>
+                <p class="recipe-description">This tasty 30 minute skillet chicken in creamy sun dried tomato sauce recipe has bold and rich garlic, parmesan, and her...</p>
+            </a>
+            <a href="./0005-chicken-bacon-ranch-pizza.html" class="recipe-card" data-title="chicken bacon ranch pizza" data-desc="a low carb chicken bacon ranch pizza with a ground chicken crust, homemade ranch topping, mozzarella cheese, and bacon....">
+                <div class="recipe-number">Recipe #0005</div>
+                <h3 class="recipe-title">Chicken Bacon Ranch Pizza</h3>
+                <p class="recipe-description">A low carb chicken bacon ranch pizza with a ground chicken crust, homemade ranch topping, mozzarella cheese, and bacon....</p>
+            </a>
+            <a href="./0006-chicken-bacon-ranch-pizza-page-2.html" class="recipe-card" data-title="chicken bacon ranch pizza (page 2)" data-desc="instructions page for the low-carb chicken bacon ranch pizza with ground chicken crust and homemade ranch topping....">
+                <div class="recipe-number">Recipe #0006</div>
+                <h3 class="recipe-title">Chicken Bacon Ranch Pizza (Page 2)</h3>
+                <p class="recipe-description">Instructions page for the low-carb chicken bacon ranch pizza with ground chicken crust and homemade ranch topping....</p>
+            </a>
+            <a href="./0008-drop-biscuits-instructions-page.html" class="recipe-card" data-title="drop biscuits (instructions page)" data-desc="a simple drop biscuit recipe that can be made using a muffin tin or any pan of your choice. instructions page only....">
+                <div class="recipe-number">Recipe #0008</div>
+                <h3 class="recipe-title">Drop Biscuits (Instructions Page)</h3>
+                <p class="recipe-description">A simple drop biscuit recipe that can be made using a muffin tin or any pan of your choice. Instructions page only....</p>
+            </a>
+            <a href="./0009-meatza-supreme.html" class="recipe-card" data-title="meatza supreme" data-desc="all the delicious flavor of regular pizza without the carbs! a thm s, gluten-free, keto-compatible, family-pleasing main...">
+                <div class="recipe-number">Recipe #0009</div>
+                <h3 class="recipe-title">Meatza Supreme</h3>
+                <p class="recipe-description">All the delicious flavor of regular pizza without the carbs! A THM S, gluten-free, keto-compatible, family-pleasing main...</p>
+            </a>
+            <a href="./0010-meatza-supreme.html" class="recipe-card" data-title="meatza supreme" data-desc="a low-carb pizza made with a ground beef crust topped with cheese, pepperoni, vegetables, and bacon....">
+                <div class="recipe-number">Recipe #0010</div>
+                <h3 class="recipe-title">Meatza Supreme</h3>
+                <p class="recipe-description">A low-carb pizza made with a ground beef crust topped with cheese, pepperoni, vegetables, and bacon....</p>
+            </a>
+            <a href="./0013-how-to-cook-bacon-in-the-oven-easy-method.html" class="recipe-card" data-title="how to cook bacon in the oven (easy method)" data-desc="a simple, no-fuss method for cooking perfectly crispy bacon in the oven with minimal cleanup....">
+                <div class="recipe-number">Recipe #0013</div>
+                <h3 class="recipe-title">How To Cook Bacon In The Oven (Easy Method)</h3>
+                <p class="recipe-description">A simple, no-fuss method for cooking perfectly crispy bacon in the oven with minimal cleanup....</p>
+            </a>
+            <a href="./0018-healthy-broccoli-cheese-soup-tips-page.html" class="recipe-card" data-title="healthy broccoli cheese soup (tips page)" data-desc="tips and customization options for the 5-ingredient broccoli cheese soup. includes suggestions for add-ins and preparati...">
+                <div class="recipe-number">Recipe #0018</div>
+                <h3 class="recipe-title">Healthy Broccoli Cheese Soup (Tips Page)</h3>
+                <p class="recipe-description">Tips and customization options for the 5-ingredient broccoli cheese soup. Includes suggestions for add-ins and preparati...</p>
+            </a>
+            <a href="./0019-broccoli-cheese-soup-low-carb-gluten-free---thickening-tips.html" class="recipe-card" data-title="broccoli cheese soup (low carb, gluten free) - thickening tips" data-desc="a low carb, gluten-free broccoli cheddar soup that uses cheese as a natural thickener instead of flour, starches, or art...">
+                <div class="recipe-number">Recipe #0019</div>
+                <h3 class="recipe-title">Broccoli Cheese Soup (Low Carb, Gluten Free) - Thickening Tips</h3>
+                <p class="recipe-description">A low carb, gluten-free broccoli cheddar soup that uses cheese as a natural thickener instead of flour, starches, or art...</p>
+            </a>
+            <a href="./0020-broccoli-cheese-soup-low-carb-gluten-free---preparation-tips.html" class="recipe-card" data-title="broccoli cheese soup (low carb, gluten-free) - preparation tips" data-desc="additional tips for making broccoli cheese soup with variations for texture and thickening methods. part of a comprehens...">
+                <div class="recipe-number">Recipe #0020</div>
+                <h3 class="recipe-title">Broccoli Cheese Soup (Low Carb, Gluten-Free) - Preparation Tips</h3>
+                <p class="recipe-description">Additional tips for making broccoli cheese soup with variations for texture and thickening methods. Part of a comprehens...</p>
+            </a>
+            <a href="./0023-spaghetti-squash.html" class="recipe-card" data-title="spaghetti squash" data-desc="a low-carb, hearty dish featuring baked spaghetti squash topped with a seasoned ground beef and bell pepper mixture in r...">
+                <div class="recipe-number">Recipe #0023</div>
+                <h3 class="recipe-title">Spaghetti Squash</h3>
+                <p class="recipe-description">A low-carb, hearty dish featuring baked spaghetti squash topped with a seasoned ground beef and bell pepper mixture in R...</p>
+            </a>
+            <a href="./0024-spaghetti-squash-with-meat-and-mozzarella-final-steps.html" class="recipe-card" data-title="spaghetti squash with meat and mozzarella (final steps)" data-desc="continuation page showing final assembly and broiling steps for stuffed spaghetti squash with meat mixture and mozzarell...">
+                <div class="recipe-number">Recipe #0024</div>
+                <h3 class="recipe-title">Spaghetti Squash with Meat and Mozzarella (Final Steps)</h3>
+                <p class="recipe-description">Continuation page showing final assembly and broiling steps for stuffed spaghetti squash with meat mixture and mozzarell...</p>
+            </a>
+            <a href="./0026-ham-cheddar-cauliflower-chowder.html" class="recipe-card" data-title="ham & cheddar cauliflower chowder" data-desc="a creamy, hearty chowder made with uncured ham steaks, cheddar cheese, and cauliflower — a comforting, lower-carb take o...">
+                <div class="recipe-number">Recipe #0026</div>
+                <h3 class="recipe-title">Ham & Cheddar Cauliflower Chowder</h3>
+                <p class="recipe-description">A creamy, hearty chowder made with uncured ham steaks, cheddar cheese, and cauliflower — a comforting, lower-carb take o...</p>
+            </a>
+            <a href="./0029-low-carb-twice-baked-cauliflower.html" class="recipe-card" data-title="low-carb twice baked cauliflower" data-desc="a delicious low-carb casserole with cauliflower, cream cheese, sour cream, bacon, and cheese that reheats very well and ...">
+                <div class="recipe-number">Recipe #0029</div>
+                <h3 class="recipe-title">Low-Carb Twice Baked Cauliflower</h3>
+                <p class="recipe-description">A delicious low-carb casserole with cauliflower, cream cheese, sour cream, bacon, and cheese that reheats very well and ...</p>
+            </a>
+            <a href="./0031-mozzarella-stuffed-italian-meatloaf-minis.html" class="recipe-card" data-title="mozzarella stuffed italian meatloaf minis" data-desc="these mini mozzarella stuffed italian meatloaves are basically big meatballs stuffed with cheese and topped with sauce. ...">
+                <div class="recipe-number">Recipe #0031</div>
+                <h3 class="recipe-title">Mozzarella Stuffed Italian Meatloaf Minis</h3>
+                <p class="recipe-description">These Mini Mozzarella Stuffed Italian Meatloaves are basically big meatballs stuffed with cheese and topped with sauce. ...</p>
+            </a>
+            <a href="./0032-chicken-tetrazzini.html" class="recipe-card" data-title="chicken tetrazzini" data-desc="a rich, creamy, cheesy dish that's perfect for weeknight dinners. all you do is throw it all together and bake it. great...">
+                <div class="recipe-number">Recipe #0032</div>
+                <h3 class="recipe-title">Chicken Tetrazzini</h3>
+                <p class="recipe-description">A rich, creamy, cheesy dish that's perfect for weeknight dinners. All you do is throw it all together and bake it. Great...</p>
+            </a>
+            <a href="./0033-sausage-spiked-meatloaves.html" class="recipe-card" data-title="sausage-spiked meatloaves" data-desc="make-ahead friendly meatloaves that combine ground beef, turkey, pork, and italian sausage. makes two loaves - one for d...">
+                <div class="recipe-number">Recipe #0033</div>
+                <h3 class="recipe-title">Sausage-Spiked Meatloaves</h3>
+                <p class="recipe-description">Make-ahead friendly meatloaves that combine ground beef, turkey, pork, and Italian sausage. Makes two loaves - one for d...</p>
+            </a>
+            <a href="./0034-1-2-brie-three-creative-brie-appetizers.html" class="recipe-card" data-title="1, 2, brie! (three creative brie appetizers)" data-desc="three creative appetizers featuring brie cheese: mini grilled brie & fig sandwiches, crab & brie wontons, and brie with ...">
+                <div class="recipe-number">Recipe #0034</div>
+                <h3 class="recipe-title">1, 2, Brie! (Three Creative Brie Appetizers)</h3>
+                <p class="recipe-description">Three creative appetizers featuring Brie cheese: Mini Grilled Brie & Fig Sandwiches, Crab & Brie Wontons, and Brie with ...</p>
+            </a>
+            <a href="./0035-double-chocolate-avocado-muffins.html" class="recipe-card" data-title="double-chocolate avocado muffins" data-desc="healthy chocolate muffins made with avocado, zucchini, and stevia sweetener. a nutritious twist on classic chocolate muf...">
+                <div class="recipe-number">Recipe #0035</div>
+                <h3 class="recipe-title">Double-Chocolate Avocado Muffins</h3>
+                <p class="recipe-description">Healthy chocolate muffins made with avocado, zucchini, and stevia sweetener. A nutritious twist on classic chocolate muf...</p>
+            </a>
+            <a href="./0036-crispy-smashed-russets-with-green-horseradish-sauce.html" class="recipe-card" data-title="crispy smashed russets with green horseradish sauce" data-desc="this preparation shows off all the goodness of russets: fluffy insides surrounded by shatteringly crisp skin, served wit...">
+                <div class="recipe-number">Recipe #0036</div>
+                <h3 class="recipe-title">Crispy Smashed Russets with Green Horseradish Sauce</h3>
+                <p class="recipe-description">This preparation shows off all the goodness of russets: fluffy insides surrounded by shatteringly crisp skin, served wit...</p>
+            </a>
+            <a href="./0037-potato-artichoke-gratin.html" class="recipe-card" data-title="potato artichoke gratin" data-desc="this gratin has all of the craveable flavors of artichoke dip in a more sophisticated form. serve it alongside anything ...">
+                <div class="recipe-number">Recipe #0037</div>
+                <h3 class="recipe-title">Potato Artichoke Gratin</h3>
+                <p class="recipe-description">This gratin has all of the craveable flavors of artichoke dip in a more sophisticated form. Serve it alongside anything ...</p>
+            </a>
+            <a href="./0038-whipped-russet-potatoes-with-sage-brown-butter.html" class="recipe-card" data-title="whipped russet potatoes with sage brown butter" data-desc="russets yield the creamiest mashed potatoes. a drizzle of browned butter on top adds a nutty flavor that mingles nicely ...">
+                <div class="recipe-number">Recipe #0038</div>
+                <h3 class="recipe-title">Whipped Russet Potatoes with Sage Brown Butter</h3>
+                <p class="recipe-description">Russets yield the creamiest mashed potatoes. A drizzle of browned butter on top adds a nutty flavor that mingles nicely ...</p>
+            </a>
+            <a href="./0039-potato-feta-mini-frittatas.html" class="recipe-card" data-title="potato & feta mini frittatas" data-desc="individual frittatas made with potatoes, zucchini, arugula, and feta cheese, seasoned with a fragrant spice blend includ...">
+                <div class="recipe-number">Recipe #0039</div>
+                <h3 class="recipe-title">Potato & Feta Mini Frittatas</h3>
+                <p class="recipe-description">Individual frittatas made with potatoes, zucchini, arugula, and feta cheese, seasoned with a fragrant spice blend includ...</p>
+            </a>
+            <a href="./0040-braised-brisket-with-dried-fruit.html" class="recipe-card" data-title="braised brisket with dried fruit" data-desc="brisket seasoned with a unique spice blend of smoky urfa chile pepper, tart sumac, warming star anise, cocoa and cinnamo...">
+                <div class="recipe-number">Recipe #0040</div>
+                <h3 class="recipe-title">Braised Brisket with Dried Fruit</h3>
+                <p class="recipe-description">Brisket seasoned with a unique spice blend of smoky Urfa chile pepper, tart sumac, warming star anise, cocoa and cinnamo...</p>
+            </a>
+            <a href="./0041-roasted-fennel-italian-sausage-stuffing.html" class="recipe-card" data-title="roasted fennel & italian sausage stuffing" data-desc="a flavorful stuffing featuring roasted fennel, italian sausage, and herbs. perfect for holiday meals or as a side dish....">
+                <div class="recipe-number">Recipe #0041</div>
+                <h3 class="recipe-title">Roasted Fennel & Italian Sausage Stuffing</h3>
+                <p class="recipe-description">A flavorful stuffing featuring roasted fennel, Italian sausage, and herbs. Perfect for holiday meals or as a side dish....</p>
+            </a>
+            <a href="./0042-potato-chickpea-curry.html" class="recipe-card" data-title="potato & chickpea curry" data-desc="this fast indian-style curry comes together with ingredients you most likely have on hand, like frozen peas and canned t...">
+                <div class="recipe-number">Recipe #0042</div>
+                <h3 class="recipe-title">Potato & Chickpea Curry</h3>
+                <p class="recipe-description">This fast Indian-style curry comes together with ingredients you most likely have on hand, like frozen peas and canned t...</p>
+            </a>
+            <a href="./0043-lemon-chicken-kale-orzo-soup.html" class="recipe-card" data-title="lemon chicken, kale & orzo soup" data-desc="serve this soup paired with a sprinkle of parmesan cheese, and a side of garlic toast....">
+                <div class="recipe-number">Recipe #0043</div>
+                <h3 class="recipe-title">Lemon Chicken, Kale & Orzo Soup</h3>
+                <p class="recipe-description">Serve this soup paired with a sprinkle of Parmesan cheese, and a side of garlic toast....</p>
+            </a>
+            <a href="./0044-spicy-pork-noodles-w-scallions-bok-choy.html" class="recipe-card" data-title="spicy pork noodles w/ scallions & bok choy" data-desc="inspired by dan dan noodles, a chinese dish that's perfect for weeknight dinners. look for the small pieces of ground po...">
+                <div class="recipe-number">Recipe #0044</div>
+                <h3 class="recipe-title">Spicy Pork Noodles w/ Scallions & Bok Choy</h3>
+                <p class="recipe-description">Inspired by Dan Dan Noodles, a Chinese dish that's perfect for weeknight dinners. Look for the small pieces of ground po...</p>
+            </a>
+            <a href="./0045-crunchy-cauliflower-bites-w-curry-lime-aioli.html" class="recipe-card" data-title="crunchy cauliflower bites w/ curry lime aioli" data-desc="putting these kid-friendly crunchy cauliflower bites with an international curry dip gets kids up to try new vegetables....">
+                <div class="recipe-number">Recipe #0045</div>
+                <h3 class="recipe-title">Crunchy Cauliflower Bites w/ Curry Lime Aioli</h3>
+                <p class="recipe-description">Putting these kid-friendly crunchy cauliflower bites with an international curry dip gets kids up to try new vegetables....</p>
+            </a>
+            <a href="./0046-mashed-cauliflower-yukon-gold.html" class="recipe-card" data-title="mashed cauliflower & yukon gold" data-desc="yukon golds add to the buttery heft of this mash and their waxy texture balances out the more-watery consistency of cook...">
+                <div class="recipe-number">Recipe #0046</div>
+                <h3 class="recipe-title">Mashed Cauliflower & Yukon Gold</h3>
+                <p class="recipe-description">Yukon Golds add to the buttery heft of this mash and their waxy texture balances out the more-watery consistency of cook...</p>
+            </a>
+            <a href="./0047-linguine-w-creamy-mushroom-sauce.html" class="recipe-card" data-title="linguine w/ creamy mushroom sauce" data-desc="here's an easier version of the wild mushrooms available at many grocery stores these days. or if you prefer wild button...">
+                <div class="recipe-number">Recipe #0047</div>
+                <h3 class="recipe-title">Linguine w/ Creamy Mushroom Sauce</h3>
+                <p class="recipe-description">Here's an easier version of the wild mushrooms available at many grocery stores these days. Or if you prefer wild button...</p>
+            </a>
+            <a href="./0048-butternut-squash-soup-wapple-grilled-cheese-sandwiches.html" class="recipe-card" data-title="butternut squash soup w/apple grilled cheese sandwiches" data-desc="layering apple slices into these sandwiches adds another dimension to a favorite grilled cheese and tomato soup combinat...">
+                <div class="recipe-number">Recipe #0048</div>
+                <h3 class="recipe-title">Butternut Squash Soup w/Apple Grilled Cheese Sandwiches</h3>
+                <p class="recipe-description">Layering apple slices into these sandwiches adds another dimension to a favorite grilled cheese and tomato soup combinat...</p>
+            </a>
+            <a href="./0049-golden-milk-poached-chicken-chickpea-salad-w-broccoli.html" class="recipe-card" data-title="golden milk-poached chicken & chickpea salad w/ broccoli" data-desc="poaching chicken in turmeric-infused milk adds tender results with a golden hue. don't skip the finishing touches of fre...">
+                <div class="recipe-number">Recipe #0049</div>
+                <h3 class="recipe-title">Golden Milk-Poached Chicken & Chickpea Salad w/ Broccoli</h3>
+                <p class="recipe-description">Poaching chicken in turmeric-infused milk adds tender results with a golden hue. Don't skip the finishing touches of fre...</p>
+            </a>
+            <a href="./0050-chickpea-dumplings-in-curried-tomato-sauce.html" class="recipe-card" data-title="chickpea dumplings in curried tomato sauce" data-desc="inspired by a dish served in pakistani and afghani and indian cuisines, these fluffy dumplings are made with chickpea fl...">
+                <div class="recipe-number">Recipe #0050</div>
+                <h3 class="recipe-title">Chickpea Dumplings In Curried Tomato Sauce</h3>
+                <p class="recipe-description">Inspired by a dish served in Pakistani and Afghani and Indian cuisines, these fluffy dumplings are made with chickpea fl...</p>
+            </a>
+            <a href="./0051-penne-w-sausage-squash-chard.html" class="recipe-card" data-title="penne w/ sausage, squash & chard" data-desc="get dinner on the table even faster by using precubed squash in this creamy pasta. found in the produce section of large...">
+                <div class="recipe-number">Recipe #0051</div>
+                <h3 class="recipe-title">Penne w/ Sausage, Squash & Chard</h3>
+                <p class="recipe-description">Get dinner on the table even faster by using precubed squash in this creamy pasta. Found in the produce section of large...</p>
+            </a>
+            <a href="./0052-salt-vinegar-chicken-brussels-sprouts.html" class="recipe-card" data-title="salt & vinegar chicken & brussels sprouts" data-desc="a strong vinegar dip turns cherry glaze into that of a jacket to complement brussels sprouts with salt-and-vinegar chips...">
+                <div class="recipe-number">Recipe #0052</div>
+                <h3 class="recipe-title">Salt & Vinegar Chicken & Brussels Sprouts</h3>
+                <p class="recipe-description">A strong vinegar dip turns cherry glaze into that of a jacket to complement Brussels sprouts with salt-and-vinegar chips...</p>
+            </a>
+            <a href="./0053-spaghetti-squash-casserole.html" class="recipe-card" data-title="spaghetti squash casserole" data-desc="strands of tender squash replace pasta for a more flavorful version of spaghetti pie. a sprinkling of nutty fontina chee...">
+                <div class="recipe-number">Recipe #0053</div>
+                <h3 class="recipe-title">Spaghetti Squash Casserole</h3>
+                <p class="recipe-description">Strands of tender squash replace pasta for a more flavorful version of spaghetti pie. A sprinkling of nutty fontina chee...</p>
+            </a>
+            <a href="./0054-chicken-tagine-with-apricots-olives.html" class="recipe-card" data-title="chicken tagine with apricots & olives" data-desc="this chicken stew is full of warming, spicy flavor thanks to ras el hanout, an aromatic moroccan spice blend. you can fi...">
+                <div class="recipe-number">Recipe #0054</div>
+                <h3 class="recipe-title">Chicken Tagine with Apricots & Olives</h3>
+                <p class="recipe-description">This chicken stew is full of warming, spicy flavor thanks to ras el hanout, an aromatic Moroccan spice blend. You can fi...</p>
+            </a>
+            <a href="./0055-cauliflower-nachos-with-chicken.html" class="recipe-card" data-title="cauliflower nachos with chicken" data-desc="swapping in tender-crisp cauliflower slices for chips ups your veggie servings for the day....">
+                <div class="recipe-number">Recipe #0055</div>
+                <h3 class="recipe-title">Cauliflower Nachos with Chicken</h3>
+                <p class="recipe-description">Swapping in tender-crisp cauliflower slices for chips ups your veggie servings for the day....</p>
+            </a>
+            <a href="./0056-antipasto-smothered-chicken.html" class="recipe-card" data-title="antipasto smothered chicken" data-desc="we like the touch of heat that pepperoncini give to this briny chicken, but if you really want to turn up the spiciness,...">
+                <div class="recipe-number">Recipe #0056</div>
+                <h3 class="recipe-title">Antipasto Smothered Chicken</h3>
+                <p class="recipe-description">We like the touch of heat that pepperoncini give to this briny chicken, but if you really want to turn up the spiciness,...</p>
+            </a>
+            <a href="./0057-chile-lime-cauliflower-quesadillas.html" class="recipe-card" data-title="chile-lime cauliflower quesadillas" data-desc="poblano pepper adds a touch of heat to these quesadillas, but we love the classic. try it both ways and see what your fa...">
+                <div class="recipe-number">Recipe #0057</div>
+                <h3 class="recipe-title">Chile-Lime Cauliflower Quesadillas</h3>
+                <p class="recipe-description">Poblano pepper adds a touch of heat to these quesadillas, but we love the classic. Try it both ways and see what your fa...</p>
+            </a>
+            <a href="./0058-skillet-beef-veggie-potpie-w-buttermilk-biscuits.html" class="recipe-card" data-title="skillet beef & veggie potpie w/ buttermilk biscuits" data-desc="using an oven-safe skillet (like cast iron) allows you to bake this potpie from stovetop to oven without dirty dishes. t...">
+                <div class="recipe-number">Recipe #0058</div>
+                <h3 class="recipe-title">Skillet Beef & Veggie Potpie w/ Buttermilk Biscuits</h3>
+                <p class="recipe-description">Using an oven-safe skillet (like cast iron) allows you to bake this potpie from stovetop to oven without dirty dishes. T...</p>
+            </a>
+            <a href="./0059-cajun-pork-chops-w-asparagus-cheesy-polenta.html" class="recipe-card" data-title="cajun pork chops w/ asparagus & cheesy polenta" data-desc="this polenta has a nice sharp bite thanks to the addition of extra-sharp cheddar. try parmigiano-reggiano or gouda inste...">
+                <div class="recipe-number">Recipe #0059</div>
+                <h3 class="recipe-title">Cajun Pork Chops w/ Asparagus & Cheesy Polenta</h3>
+                <p class="recipe-description">This polenta has a nice sharp bite thanks to the addition of extra-sharp Cheddar. Try Parmigiano-Reggiano or Gouda inste...</p>
+            </a>
+            <a href="./0060-muffin-pan-egg-bites.html" class="recipe-card" data-title="muffin-pan egg bites" data-desc="these portable egg bites are perfect for meal prep. you can make them ahead and reheat throughout the week for quick bre...">
+                <div class="recipe-number">Recipe #0060</div>
+                <h3 class="recipe-title">Muffin-Pan Egg Bites</h3>
+                <p class="recipe-description">These portable egg bites are perfect for meal prep. You can make them ahead and reheat throughout the week for quick bre...</p>
+            </a>
+            <a href="./0061-skillet-chili-mac.html" class="recipe-card" data-title="skillet chili mac" data-desc="delicious blend of heat in this pasta dish. if that's not your thing, swap in green bell peppers for the poblanos!...">
+                <div class="recipe-number">Recipe #0061</div>
+                <h3 class="recipe-title">Skillet Chili Mac</h3>
+                <p class="recipe-description">Delicious blend of heat in this pasta dish. If that's not your thing, swap in green bell peppers for the poblanos!...</p>
+            </a>
+            <a href="./0062-herb-roasted-drumsticks-w-potatoes.html" class="recipe-card" data-title="herb-roasted drumsticks w/ potatoes" data-desc="lightly adapted from the hearty boys cookbook. both the drumsticks and the sauce in this recipe can be made earlier in t...">
+                <div class="recipe-number">Recipe #0062</div>
+                <h3 class="recipe-title">Herb-Roasted Drumsticks w/ Potatoes</h3>
+                <p class="recipe-description">Lightly adapted from The Hearty Boys cookbook. Both the drumsticks and the sauce in this recipe can be made earlier in t...</p>
+            </a>
+            <a href="./0063-crispy-ravioli-w-red-pepper-mushroom-bolognese.html" class="recipe-card" data-title="crispy ravioli w/ red pepper & mushroom bolognese" data-desc="comfort food at its best. instead of or alongside oil instead of water. here, we lighten it up by baking instead of fryi...">
+                <div class="recipe-number">Recipe #0063</div>
+                <h3 class="recipe-title">Crispy Ravioli w/ Red Pepper & Mushroom Bolognese</h3>
+                <p class="recipe-description">Comfort food at its best. Instead of or alongside oil instead of water. Here, we lighten it up by baking instead of fryi...</p>
+            </a>
+            <a href="./0064-scallion-ginger-beef-broccoli.html" class="recipe-card" data-title="scallion-ginger beef & broccoli" data-desc="why go out for takeout? try at home. this one packs in more vegetables and nearly halves the calories of what you would ...">
+                <div class="recipe-number">Recipe #0064</div>
+                <h3 class="recipe-title">Scallion-Ginger Beef & Broccoli</h3>
+                <p class="recipe-description">Why go out for takeout? Try at home. This one packs in more vegetables and nearly halves the calories of what you would ...</p>
+            </a>
+            <a href="./0065-herbed-ricotta-mini-quiches.html" class="recipe-card" data-title="herbed ricotta mini quiches" data-desc="whole-wheat sandwich bread makes for a simple crust that's easy for kids to cut and stuff into muffin tins. you can use ...">
+                <div class="recipe-number">Recipe #0065</div>
+                <h3 class="recipe-title">Herbed Ricotta Mini Quiches</h3>
+                <p class="recipe-description">Whole-wheat sandwich bread makes for a simple crust that's easy for kids to cut and stuff into muffin tins. You can use ...</p>
+            </a>
+            <a href="./0066-cauliflower-tikka-masala-with-chickpeas.html" class="recipe-card" data-title="cauliflower tikka masala with chickpeas" data-desc="a vegetarian riff on a popular indian dish, swapping cauliflower and chickpeas for chicken. serve over rice for a comple...">
+                <div class="recipe-number">Recipe #0066</div>
+                <h3 class="recipe-title">Cauliflower Tikka Masala with Chickpeas</h3>
+                <p class="recipe-description">A vegetarian riff on a popular Indian dish, swapping cauliflower and chickpeas for chicken. Serve over rice for a comple...</p>
+            </a>
+            <a href="./0067-peanut-butter-chocolate-chip-skillet-cookie.html" class="recipe-card" data-title="peanut butter-chocolate chip skillet cookie" data-desc="a decadent dessert — one giant cookie baked in a skillet that's crispy on the edges and oh-so-soft on the inside....">
+                <div class="recipe-number">Recipe #0067</div>
+                <h3 class="recipe-title">Peanut Butter-Chocolate Chip Skillet Cookie</h3>
+                <p class="recipe-description">A decadent dessert — one giant cookie baked in a skillet that's crispy on the edges and oh-so-soft on the inside....</p>
+            </a>
+            <a href="./0068-one-pot-mac-cheese-with-cauliflower-brussels-sprouts.html" class="recipe-card" data-title="one-pot mac & cheese with cauliflower & brussels sprouts" data-desc="taking a minute to sizzle some garlic in olive oil is a simple way to pep up the cheese sauce, and the flavor plays well...">
+                <div class="recipe-number">Recipe #0068</div>
+                <h3 class="recipe-title">One-Pot Mac & Cheese with Cauliflower & Brussels Sprouts</h3>
+                <p class="recipe-description">Taking a minute to sizzle some garlic in olive oil is a simple way to pep up the cheese sauce, and the flavor plays well...</p>
+            </a>
+            <a href="./0069-cheesy-beef-enchilada-casserole.html" class="recipe-card" data-title="cheesy beef enchilada casserole" data-desc="this veggie-packed casserole is mild, so put out hot sauce and chopped jalapeños if you're feeding heat-seekers....">
+                <div class="recipe-number">Recipe #0069</div>
+                <h3 class="recipe-title">Cheesy Beef Enchilada Casserole</h3>
+                <p class="recipe-description">This veggie-packed casserole is mild, so put out hot sauce and chopped jalapeños if you're feeding heat-seekers....</p>
+            </a>
+            <a href="./0070-pesto-chicken-cauliflower-pizza-antipasto-salad.html" class="recipe-card" data-title="pesto chicken cauliflower pizza & antipasto salad" data-desc="while the antipasto salad has a distinctly retro vibe, the cauliflower-crust pizza is 100% au courant for pizza night. i...">
+                <div class="recipe-number">Recipe #0070</div>
+                <h3 class="recipe-title">Pesto Chicken Cauliflower Pizza & Antipasto Salad</h3>
+                <p class="recipe-description">While the antipasto salad has a distinctly retro vibe, the cauliflower-crust pizza is 100% au courant for pizza night. I...</p>
+            </a>
+            <a href="./0071-chicken-enchilada-soup.html" class="recipe-card" data-title="chicken enchilada soup" data-desc="corn tortillas thicken this soup, but cheddar and cream cheese give it the richness you'd expect from an enchilada. serv...">
+                <div class="recipe-number">Recipe #0071</div>
+                <h3 class="recipe-title">Chicken Enchilada Soup</h3>
+                <p class="recipe-description">Corn tortillas thicken this soup, but Cheddar and cream cheese give it the richness you'd expect from an enchilada. Serv...</p>
+            </a>
+            <a href="./0071-chicken-potpie-soup-with-tater-tot-topping.html" class="recipe-card" data-title="chicken potpie soup with tater tot topping" data-desc="this bubbling stew-like soup is a great way to use up leftover cooked chicken or turkey—and a perfect excuse to indulge ...">
+                <div class="recipe-number">Recipe #0071</div>
+                <h3 class="recipe-title">Chicken Potpie Soup with Tater Tot Topping</h3>
+                <p class="recipe-description">This bubbling stew-like soup is a great way to use up leftover cooked chicken or turkey—and a perfect excuse to indulge ...</p>
+            </a>
+            <a href="./0072-chicken-potpie-soup-with-tater-tot-topping.html" class="recipe-card" data-title="chicken potpie soup with tater tot topping" data-desc="this bubbling stew-like soup is a great way to use up leftover cooked chicken or turkey—and a perfect excuse to indulge ...">
+                <div class="recipe-number">Recipe #0072</div>
+                <h3 class="recipe-title">Chicken Potpie Soup with Tater Tot Topping</h3>
+                <p class="recipe-description">This bubbling stew-like soup is a great way to use up leftover cooked chicken or turkey—and a perfect excuse to indulge ...</p>
+            </a>
+            <a href="./0073-kimchi-pork-burgers.html" class="recipe-card" data-title="kimchi pork burgers" data-desc="this amped-up burger swaps out beef for ground pork; it gives you similar nutrition (protein, iron, zinc) but has a mild...">
+                <div class="recipe-number">Recipe #0073</div>
+                <h3 class="recipe-title">Kimchi Pork Burgers</h3>
+                <p class="recipe-description">This amped-up burger swaps out beef for ground pork; it gives you similar nutrition (protein, iron, zinc) but has a mild...</p>
+            </a>
+            <a href="./0074-cheesy-zucchini-casserole.html" class="recipe-card" data-title="cheesy zucchini casserole" data-desc="recipe from allrecipes.com - appears to be a cheesy zucchini bread casserole...">
+                <div class="recipe-number">Recipe #0074</div>
+                <h3 class="recipe-title">Cheesy Zucchini Casserole</h3>
+                <p class="recipe-description">Recipe from Allrecipes.com - appears to be a cheesy zucchini bread casserole...</p>
+            </a>
+            <a href="./0075-cheesy-zucchini-casserole-continued.html" class="recipe-card" data-title="cheesy zucchini casserole (continued)" data-desc="this page shows the directions portion of the cheesy zucchini casserole recipe from allrecipes.com...">
+                <div class="recipe-number">Recipe #0075</div>
+                <h3 class="recipe-title">Cheesy Zucchini Casserole (continued)</h3>
+                <p class="recipe-description">This page shows the directions portion of the Cheesy Zucchini Casserole recipe from Allrecipes.com...</p>
+            </a>
+            <a href="./0076-cheesy-zucchini-casserole.html" class="recipe-card" data-title="cheesy zucchini casserole" data-desc="">
+                <div class="recipe-number">Recipe #0076</div>
+                <h3 class="recipe-title">Cheesy Zucchini Casserole</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0077-cheesy-zucchini-casserole-instructions.html" class="recipe-card" data-title="cheesy zucchini casserole (instructions)" data-desc="">
+                <div class="recipe-number">Recipe #0077</div>
+                <h3 class="recipe-title">Cheesy Zucchini Casserole (Instructions)</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0078-keto-taco-pie.html" class="recipe-card" data-title="keto taco pie" data-desc="">
+                <div class="recipe-number">Recipe #0078</div>
+                <h3 class="recipe-title">Keto Taco Pie</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0079-keto-taco-pie-recipe.html" class="recipe-card" data-title="keto taco pie recipe" data-desc="">
+                <div class="recipe-number">Recipe #0079</div>
+                <h3 class="recipe-title">Keto Taco Pie Recipe</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0080-fiesta-turkey-pie.html" class="recipe-card" data-title="fiesta turkey pie" data-desc="">
+                <div class="recipe-number">Recipe #0080</div>
+                <h3 class="recipe-title">Fiesta Turkey Pie</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0081-recipe-notes-page.html" class="recipe-card" data-title="recipe notes page" data-desc="check at 16 min depending on oven to make sure crust doesn't burn....">
+                <div class="recipe-number">Recipe #0081</div>
+                <h3 class="recipe-title">Recipe Notes Page</h3>
+                <p class="recipe-description">Check at 16 min depending on oven to make sure crust doesn't burn....</p>
+            </a>
+            <a href="./0082-keto-breakfast-pinwheels-with-bacon-spinach-and-feta.html" class="recipe-card" data-title="keto breakfast pinwheels with bacon, spinach, and feta" data-desc="these keto breakfast pinwheels with bacon, spinach, and feta are just what you need in your life....">
+                <div class="recipe-number">Recipe #0082</div>
+                <h3 class="recipe-title">Keto Breakfast Pinwheels with Bacon, Spinach, and Feta</h3>
+                <p class="recipe-description">These Keto Breakfast Pinwheels with Bacon, Spinach, and Feta are just what you need in your life....</p>
+            </a>
+            <a href="./0083-keto-breakfast-pinwheels-with-bacon-spinach-and-feta.html" class="recipe-card" data-title="keto breakfast pinwheels with bacon, spinach, and feta" data-desc="">
+                <div class="recipe-number">Recipe #0083</div>
+                <h3 class="recipe-title">Keto Breakfast Pinwheels with Bacon, Spinach, and Feta</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0084-oven-roasted-chicken.html" class="recipe-card" data-title="oven roasted chicken" data-desc="">
+                <div class="recipe-number">Recipe #0084</div>
+                <h3 class="recipe-title">Oven Roasted Chicken</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0085-oven-roasted-chicken.html" class="recipe-card" data-title="oven roasted chicken" data-desc="">
+                <div class="recipe-number">Recipe #0085</div>
+                <h3 class="recipe-title">Oven Roasted Chicken</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0086-mozzarella-stuffed-italian-meatloaf-minis.html" class="recipe-card" data-title="mozzarella stuffed italian meatloaf minis" data-desc="these mini mozzarella stuffed italian meatloaves are basically big meatballs stuffed with cheese and topped with sauce. ...">
+                <div class="recipe-number">Recipe #0086</div>
+                <h3 class="recipe-title">Mozzarella Stuffed Italian Meatloaf Minis</h3>
+                <p class="recipe-description">These Mini Mozzarella Stuffed Italian Meatloaves are basically big meatballs stuffed with cheese and topped with sauce. ...</p>
+            </a>
+            <a href="./0087-cabbage-soup-with-chicken-dumplings.html" class="recipe-card" data-title="cabbage soup with chicken dumplings" data-desc="keto cabbage soup with chicken dumplings featuring tender cabbage and flavorful chicken dumplings in a rich broth, serve...">
+                <div class="recipe-number">Recipe #0087</div>
+                <h3 class="recipe-title">Cabbage Soup With Chicken Dumplings</h3>
+                <p class="recipe-description">Keto cabbage soup with chicken dumplings featuring tender cabbage and flavorful chicken dumplings in a rich broth, serve...</p>
+            </a>
+            <a href="./0089-low-carb-cauliflower-cheese.html" class="recipe-card" data-title="low carb cauliflower cheese" data-desc="a low-carb cauliflower cheese dish with a creamy broccoli cheese sauce, perfect as a side dish....">
+                <div class="recipe-number">Recipe #0089</div>
+                <h3 class="recipe-title">Low Carb Cauliflower Cheese</h3>
+                <p class="recipe-description">A low-carb cauliflower cheese dish with a creamy broccoli cheese sauce, perfect as a side dish....</p>
+            </a>
+            <a href="./0090-bbq-pulled-pork-with-gravy.html" class="recipe-card" data-title="bbq pulled pork with gravy" data-desc="easy slow cooker pulled pork with homemade gravy, courtesy of trisha yearwood from trisha's southern kitchen....">
+                <div class="recipe-number">Recipe #0090</div>
+                <h3 class="recipe-title">BBQ Pulled Pork With Gravy</h3>
+                <p class="recipe-description">Easy slow cooker pulled pork with homemade gravy, courtesy of Trisha Yearwood from Trisha's Southern Kitchen....</p>
+            </a>
+            <a href="./0091-loaded-broccoli-casserole.html" class="recipe-card" data-title="loaded broccoli casserole" data-desc="this is a good one to keep for the holiday dinners! low carb too! a cheesy broccoli casserole loaded with bacon and topp...">
+                <div class="recipe-number">Recipe #0091</div>
+                <h3 class="recipe-title">Loaded Broccoli Casserole</h3>
+                <p class="recipe-description">This is a good one to keep for the holiday dinners! Low carb too! A cheesy broccoli casserole loaded with bacon and topp...</p>
+            </a>
+            <a href="./0092-easy-keto-pizza-roll-ups.html" class="recipe-card" data-title="easy keto pizza roll-ups" data-desc="low-carb pizza roll-ups made with melted mozzarella cheese and topped with vegetables and italian seasoning....">
+                <div class="recipe-number">Recipe #0092</div>
+                <h3 class="recipe-title">Easy Keto Pizza Roll-Ups</h3>
+                <p class="recipe-description">Low-carb pizza roll-ups made with melted mozzarella cheese and topped with vegetables and Italian seasoning....</p>
+            </a>
+            <a href="./0096-lamb-shanks-braised.html" class="recipe-card" data-title="lamb shanks (braised)" data-desc="">
+                <div class="recipe-number">Recipe #0096</div>
+                <h3 class="recipe-title">Lamb Shanks (Braised)</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0097-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0097</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0098-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0098</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0099-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0099</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0100-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0100</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0101-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0101</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0102-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0102</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0103-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0103</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0104-braised-lamb-shanks.html" class="recipe-card" data-title="braised lamb shanks" data-desc="">
+                <div class="recipe-number">Recipe #0104</div>
+                <h3 class="recipe-title">Braised Lamb Shanks</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0105-keto-chocolate-brownie.html" class="recipe-card" data-title="keto chocolate brownie" data-desc="easy to prepare keto chocolate brownie...">
+                <div class="recipe-number">Recipe #0105</div>
+                <h3 class="recipe-title">Keto Chocolate Brownie</h3>
+                <p class="recipe-description">Easy to prepare keto chocolate brownie...</p>
+            </a>
+            <a href="./0106-keto-chocolate-brownie-instructions.html" class="recipe-card" data-title="keto chocolate brownie (instructions)" data-desc="">
+                <div class="recipe-number">Recipe #0106</div>
+                <h3 class="recipe-title">Keto Chocolate Brownie (Instructions)</h3>
+                <p class="recipe-description"></p>
+            </a>
+            <a href="./0107-keto-no-bake-swiss-cocoa-cookies.html" class="recipe-card" data-title="keto no bake swiss cocoa cookies" data-desc="keto no bake swiss cocoa cookies...">
+                <div class="recipe-number">Recipe #0107</div>
+                <h3 class="recipe-title">Keto No Bake Swiss Cocoa Cookies</h3>
+                <p class="recipe-description">Keto No Bake Swiss Cocoa Cookies...</p>
+            </a>
+            <a href="./0108-low-carb-keto-zuppa-toscana-soup-recipe.html" class="recipe-card" data-title="low carb keto zuppa toscana soup recipe" data-desc="keto friendly soup recipe...">
+                <div class="recipe-number">Recipe #0108</div>
+                <h3 class="recipe-title">Low Carb Keto Zuppa Toscana Soup Recipe</h3>
+                <p class="recipe-description">Keto Friendly soup recipe...</p>
+            </a>
+            <a href="./0109-recipe-notes.html" class="recipe-card" data-title="recipe notes" data-desc="handwritten notes documenting personal modifications and observations about a sausage and vegetable soup/stew recipe...">
+                <div class="recipe-number">Recipe #0109</div>
+                <h3 class="recipe-title">Recipe Notes</h3>
+                <p class="recipe-description">Handwritten notes documenting personal modifications and observations about a sausage and vegetable soup/stew recipe...</p>
+            </a>
+            <a href="./0110-recipe-notes.html" class="recipe-card" data-title="recipe notes" data-desc="recipe notes page - a blank template with lined space for personal notes...">
+                <div class="recipe-number">Recipe #0110</div>
+                <h3 class="recipe-title">Recipe Notes</h3>
+                <p class="recipe-description">Recipe Notes page - a blank template with lined space for personal notes...</p>
+            </a>
+            <a href="./0111-zucchini-bread.html" class="recipe-card" data-title="zucchini bread" data-desc="a classic zucchini bread recipe with two versions - one for 2 loaves and a scaled-up version for 8 loaves. includes hand...">
+                <div class="recipe-number">Recipe #0111</div>
+                <h3 class="recipe-title">Zucchini Bread</h3>
+                <p class="recipe-description">A classic zucchini bread recipe with two versions - one for 2 loaves and a scaled-up version for 8 loaves. Includes hand...</p>
+            </a>
+            <a href="./0112-everything-bagels.html" class="recipe-card" data-title="everything bagels" data-desc="a keto/low-carb version of everything bagels using almond flour and cheese-based 'fathead' dough. from hillary grossmann...">
+                <div class="recipe-number">Recipe #0112</div>
+                <h3 class="recipe-title">Everything Bagels</h3>
+                <p class="recipe-description">A keto/low-carb version of everything bagels using almond flour and cheese-based 'fathead' dough. From Hillary Grossmann...</p>
+            </a>
+            <a href="./0113-roasted-leg-of-lamb.html" class="recipe-card" data-title="roasted leg of lamb" data-desc="this recipe is so good yet it doesn't require too much time, effort or ingredients. it's easy & fool-proof, even for you...">
+                <div class="recipe-number">Recipe #0113</div>
+                <h3 class="recipe-title">Roasted Leg of Lamb</h3>
+                <p class="recipe-description">This recipe is so good yet it doesn't require too much time, effort or ingredients. It's easy & fool-proof, even for you...</p>
+            </a>
+            <a href="./0114-mini-hasselback-potatoes.html" class="recipe-card" data-title="mini hasselback potatoes" data-desc="crisp-tender, garlicky, herb hasselback potatoes make for the perfect side dish! and they're mini so it makes for easy s...">
+                <div class="recipe-number">Recipe #0114</div>
+                <h3 class="recipe-title">Mini Hasselback Potatoes</h3>
+                <p class="recipe-description">Crisp-tender, garlicky, herb hasselback potatoes make for the perfect side dish! And they're mini so it makes for easy s...</p>
+            </a>
+            <a href="./0117-brussel-sprouts-gratin.html" class="recipe-card" data-title="brussel sprouts gratin" data-desc="a light cheese sauce made with gruyere and parmesan – the perfect holiday dish! from www.skinnytaste.com...">
+                <div class="recipe-number">Recipe #0117</div>
+                <h3 class="recipe-title">Brussel Sprouts Gratin</h3>
+                <p class="recipe-description">A light cheese sauce made with Gruyere and Parmesan – the perfect Holiday dish! From www.skinnytaste.com...</p>
+            </a>
+            <a href="./0119-cajun-mustard-creamed-cabbage.html" class="recipe-card" data-title="cajun mustard creamed cabbage" data-desc="a versatile recipe that can be made as a 2-in-1 dish — you can stop after adding the broth and dry seasonings to make fr...">
+                <div class="recipe-number">Recipe #0119</div>
+                <h3 class="recipe-title">Cajun Mustard Creamed Cabbage</h3>
+                <p class="recipe-description">A versatile recipe that can be made as a 2-in-1 dish — you can stop after adding the broth and dry seasonings to make fr...</p>
+            </a>
+            <a href="./0124-chocolate-cream-pie-ii.html" class="recipe-card" data-title="chocolate cream pie ii" data-desc="this is an old family recipe my grandmother used to make me when i was a little boy. recipe from allrecipes with 4 out o...">
+                <div class="recipe-number">Recipe #0124</div>
+                <h3 class="recipe-title">Chocolate Cream Pie II</h3>
+                <p class="recipe-description">This is an old family recipe my grandmother used to make me when I was a little boy. Recipe from Allrecipes with 4 out o...</p>
+            </a>
+            <a href="./0130-low-carb-creamy-crockpot-chicken-broccoli-and-cauliflower.html" class="recipe-card" data-title="low carb creamy crockpot chicken broccoli and cauliflower" data-desc="low carb creamy crockpot chicken, broccoli and cauliflower. posted by carlee carter to the facebook group 'low carb insp...">
+                <div class="recipe-number">Recipe #0130</div>
+                <h3 class="recipe-title">Low Carb Creamy Crockpot Chicken Broccoli And Cauliflower</h3>
+                <p class="recipe-description">Low Carb Creamy Crockpot Chicken, Broccoli and Cauliflower. Posted by Carlee Carter to the Facebook group 'Low Carb Insp...</p>
+            </a>
+            <a href="./0131-low-carb-key-lime-cheesecake.html" class="recipe-card" data-title="low carb key lime cheesecake" data-desc="this recipe was shared by tracy chester on the facebook group 'low carb inspirations (plus keto friendly recipes)'. it i...">
+                <div class="recipe-number">Recipe #0131</div>
+                <h3 class="recipe-title">Low Carb Key Lime Cheesecake</h3>
+                <p class="recipe-description">This recipe was shared by Tracy Chester on the Facebook group 'Low Carb Inspirations (plus Keto friendly recipes)'. It i...</p>
+            </a>
+            <a href="./0134-split-pea-soup.html" class="recipe-card" data-title="split pea soup" data-desc="betty crocker recipe (© 2020 ®/tm general mills all rights reserved). rated 5 stars....">
+                <div class="recipe-number">Recipe #0134</div>
+                <h3 class="recipe-title">Split Pea Soup</h3>
+                <p class="recipe-description">Betty Crocker recipe (© 2020 ®/TM General Mills All Rights Reserved). Rated 5 stars....</p>
+            </a>
+            <a href="./0135-foolproof-rib-roast.html" class="recipe-card" data-title="foolproof rib roast" data-desc="i was looking for an easy way to make our christmas rib roast. it turned out perfect. rib roast can be expensive, so thi...">
+                <div class="recipe-number">Recipe #0135</div>
+                <h3 class="recipe-title">Foolproof Rib Roast</h3>
+                <p class="recipe-description">I was looking for an easy way to make our Christmas Rib Roast. It turned out PERFECT. Rib Roast can be expensive, so thi...</p>
+            </a>
+            <a href="./0136-shredded-red-cabbage-carrot-and-mint-salad.html" class="recipe-card" data-title="shredded red cabbage, carrot and mint salad" data-desc="a colourful, refreshing, crunchy salad that is versatile and will suit pretty much any cuisine. i made this as part of a...">
+                <div class="recipe-number">Recipe #0136</div>
+                <h3 class="recipe-title">Shredded Red Cabbage, Carrot and Mint Salad</h3>
+                <p class="recipe-description">A colourful, refreshing, crunchy salad that is versatile and will suit pretty much any cuisine. I made this as part of a...</p>
+            </a>
+            <a href="./0141-cheesy-crustless-quiche-with-broccoli-and-ham.html" class="recipe-card" data-title="cheesy crustless quiche with broccoli and ham" data-desc="ham, broccoli, and cheese take center stage in this crustless quiche! it's low-carb, gluten-free, and full of rich cream...">
+                <div class="recipe-number">Recipe #0141</div>
+                <h3 class="recipe-title">Cheesy Crustless Quiche with Broccoli and Ham</h3>
+                <p class="recipe-description">Ham, broccoli, and cheese take center stage in this crustless quiche! It's low-carb, gluten-free, and full of rich cream...</p>
+            </a>
+            <a href="./0142-broccoli-cheddar-corn-muffins.html" class="recipe-card" data-title="broccoli cheddar corn muffins" data-desc="course: bread, side dish. cuisine: american. author: melissa sperka...">
+                <div class="recipe-number">Recipe #0142</div>
+                <h3 class="recipe-title">Broccoli Cheddar Corn Muffins</h3>
+                <p class="recipe-description">Course: Bread, Side Dish. Cuisine: American. Author: Melissa Sperka...</p>
+            </a>
+            <a href="./0143-keto-blt-chaffle-sandwich.html" class="recipe-card" data-title="keto blt chaffle sandwich" data-desc="this keto blt chaffle sandwich is the best keto sandwich bread i've had in more than 2 years! wow! it's easy to make and...">
+                <div class="recipe-number">Recipe #0143</div>
+                <h3 class="recipe-title">Keto BLT Chaffle Sandwich</h3>
+                <p class="recipe-description">This Keto BLT Chaffle Sandwich is the best keto sandwich bread I've had in more than 2 years! Wow! It's easy to make and...</p>
+            </a>
+            <a href="./0144-instant-pot-leg-of-lamb.html" class="recipe-card" data-title="instant pot leg of lamb" data-desc="a festive leg of lamb is a wonderful centerpiece for special celebrations. traditional methods might take up to 8 hours ...">
+                <div class="recipe-number">Recipe #0144</div>
+                <h3 class="recipe-title">Instant Pot Leg of Lamb</h3>
+                <p class="recipe-description">A festive leg of lamb is a wonderful centerpiece for special celebrations. Traditional methods might take up to 8 hours ...</p>
+            </a>
+            <a href="./0148-courtneys-low-carb-crack-slaw.html" class="recipe-card" data-title="courtney's low carb crack slaw" data-desc="low carb heaven! a delicious and satisfying crack slaw recipe with ground beef, cabbage, and a spicy-savory sauce....">
+                <div class="recipe-number">Recipe #0148</div>
+                <h3 class="recipe-title">Courtney's Low Carb Crack Slaw</h3>
+                <p class="recipe-description">Low carb heaven! A delicious and satisfying crack slaw recipe with ground beef, cabbage, and a spicy-savory sauce....</p>
+            </a>
+            <a href="./0149-penne-sausage-casserole.html" class="recipe-card" data-title="penne & sausage casserole" data-desc="my own creation! a hearty casserole with penne pasta, mild sausage, marinara sauce, and mozzarella cheese....">
+                <div class="recipe-number">Recipe #0149</div>
+                <h3 class="recipe-title">Penne & Sausage Casserole</h3>
+                <p class="recipe-description">My own creation! A hearty casserole with penne pasta, mild sausage, marinara sauce, and mozzarella cheese....</p>
+            </a>
+            <a href="./0150-penne-sausage-casserole---completion.html" class="recipe-card" data-title="penne & sausage casserole - completion" data-desc="final instructions and notes for the penne & sausage casserole from page 149....">
+                <div class="recipe-number">Recipe #0150</div>
+                <h3 class="recipe-title">Penne & Sausage Casserole - Completion</h3>
+                <p class="recipe-description">Final instructions and notes for the Penne & Sausage Casserole from page 149....</p>
+            </a>
+            <a href="./0152-chicken-thighs-in-cast-iron-skillet.html" class="recipe-card" data-title="chicken thighs in cast iron skillet" data-desc="sophisticated enough for a sunday supper yet quick enough for wednesday's dinner, this master recipe is all in the techn...">
+                <div class="recipe-number">Recipe #0152</div>
+                <h3 class="recipe-title">Chicken Thighs In Cast Iron Skillet</h3>
+                <p class="recipe-description">Sophisticated enough for a Sunday supper yet quick enough for Wednesday's dinner, this master recipe is all in the techn...</p>
+            </a>
+            <a href="./0154-grilled-rosemary-lamb-meatballs.html" class="recipe-card" data-title="grilled rosemary lamb meatballs" data-desc="grilled lamb meatballs seasoned with rosemary and garlic, served over penne pasta with fresh chopped tomatoes....">
+                <div class="recipe-number">Recipe #0154</div>
+                <h3 class="recipe-title">Grilled Rosemary Lamb Meatballs</h3>
+                <p class="recipe-description">Grilled lamb meatballs seasoned with rosemary and garlic, served over penne pasta with fresh chopped tomatoes....</p>
+            </a>
+            <a href="./0156-poached-egg-microwave.html" class="recipe-card" data-title="poached egg (microwave)" data-desc="a quick and easy method for poaching an egg using a microwave and a custard cup....">
+                <div class="recipe-number">Recipe #0156</div>
+                <h3 class="recipe-title">Poached Egg (microwave)</h3>
+                <p class="recipe-description">A quick and easy method for poaching an egg using a microwave and a custard cup....</p>
+            </a>
+            <a href="./0157-one-pot-creamy-mushroom-pasta.html" class="recipe-card" data-title="one pot creamy mushroom pasta" data-desc="a creamy one-pot pasta dish with mushrooms, spinach, and parmesan cheese...">
+                <div class="recipe-number">Recipe #0157</div>
+                <h3 class="recipe-title">One Pot Creamy Mushroom Pasta</h3>
+                <p class="recipe-description">A creamy one-pot pasta dish with mushrooms, spinach, and Parmesan cheese...</p>
+            </a>
+            <a href="./0159-loaded-breakfast-skillet.html" class="recipe-card" data-title="loaded breakfast skillet" data-desc="potatoes, bacon, onions, eggs, and shredded cheese make a hearty and delicious breakfast or brunch dish....">
+                <div class="recipe-number">Recipe #0159</div>
+                <h3 class="recipe-title">Loaded Breakfast Skillet</h3>
+                <p class="recipe-description">Potatoes, bacon, onions, eggs, and shredded cheese make a hearty and delicious breakfast or brunch dish....</p>
+            </a>
+            <a href="./0161-carrot-cake.html" class="recipe-card" data-title="carrot cake" data-desc="a classic carrot cake recipe passed down from mom...">
+                <div class="recipe-number">Recipe #0161</div>
+                <h3 class="recipe-title">Carrot Cake</h3>
+                <p class="recipe-description">A classic carrot cake recipe passed down from Mom...</p>
+            </a>
+            <a href="./0162-cream-cheese-frosting.html" class="recipe-card" data-title="cream cheese frosting" data-desc="cream cheese frosting for carrot cake (continuation from previous page)...">
+                <div class="recipe-number">Recipe #0162</div>
+                <h3 class="recipe-title">Cream Cheese Frosting</h3>
+                <p class="recipe-description">Cream cheese frosting for carrot cake (continuation from previous page)...</p>
+            </a>
+            <a href="./0163-easy-instant-pot-beef-short-ribs.html" class="recipe-card" data-title="easy instant pot beef short ribs" data-desc="wondering how to cook short ribs? this pressure cooker instant pot beef short ribs recipe makes it easy with just 5 ingr...">
+                <div class="recipe-number">Recipe #0163</div>
+                <h3 class="recipe-title">Easy Instant Pot Beef Short Ribs</h3>
+                <p class="recipe-description">Wondering how to cook short ribs? This pressure cooker Instant Pot beef short ribs recipe makes it EASY with just 5 ingr...</p>
+            </a>
+            <a href="./0164-easy-instant-pot-beef-short-ribs-optional-thicker-sauce.html" class="recipe-card" data-title="easy instant pot beef short ribs (optional thicker sauce)" data-desc="optional steps for making a thicker sauce for the instant pot beef short ribs recipe...">
+                <div class="recipe-number">Recipe #0164</div>
+                <h3 class="recipe-title">Easy Instant Pot Beef Short Ribs (Optional Thicker Sauce)</h3>
+                <p class="recipe-description">Optional steps for making a thicker sauce for the Instant Pot beef short ribs recipe...</p>
+            </a>
+            <a href="./0165-braised-cabernet-beef-short-ribs.html" class="recipe-card" data-title="braised cabernet beef short ribs" data-desc="this recipe uses boneless beef short ribs and, after browning, can be made either in a covered dish in the oven or in yo...">
+                <div class="recipe-number">Recipe #0165</div>
+                <h3 class="recipe-title">Braised Cabernet Beef Short Ribs</h3>
+                <p class="recipe-description">This recipe uses boneless beef short ribs and, after browning, can be made either in a covered dish in the oven or in yo...</p>
+            </a>
+            <a href="./0169-bbq-beef-onion-sliders.html" class="recipe-card" data-title="bbq beef & onion sliders" data-desc="easy recipe for bbq beef & onion sliders for a quick monday meal!...">
+                <div class="recipe-number">Recipe #0169</div>
+                <h3 class="recipe-title">BBQ Beef & Onion Sliders</h3>
+                <p class="recipe-description">Easy recipe for BBQ Beef & Onion Sliders for a quick Monday meal!...</p>
+            </a>
+            <a href="./0170-bbq-beef-onion-sliders.html" class="recipe-card" data-title="bbq beef & onion sliders" data-desc="leftover beef can be used in many different ways. even a small amount of leftover beef can go a long way. one super easy...">
+                <div class="recipe-number">Recipe #0170</div>
+                <h3 class="recipe-title">BBQ Beef & Onion Sliders</h3>
+                <p class="recipe-description">Leftover beef can be used in many different ways. Even a small amount of leftover beef can go a long way. One super easy...</p>
+            </a>
+            <a href="./0171-chilled-asparagus-soup-with-goat-cheese.html" class="recipe-card" data-title="chilled asparagus soup with goat cheese" data-desc="recipe courtesy of anne burrell from secrets of a restaurant chef - the secret to chilled asparagus soup...">
+                <div class="recipe-number">Recipe #0171</div>
+                <h3 class="recipe-title">Chilled Asparagus Soup with Goat Cheese</h3>
+                <p class="recipe-description">Recipe courtesy of Anne Burrell from Secrets of a Restaurant Chef - The Secret to Chilled Asparagus Soup...</p>
+            </a>
+            <a href="./0172-instant-pot-split-pea-soup-with-ham.html" class="recipe-card" data-title="instant pot® split pea soup with ham" data-desc="a hearty split pea soup made in the instant pot with ham, vegetables, and perfectly cooked split peas...">
+                <div class="recipe-number">Recipe #0172</div>
+                <h3 class="recipe-title">Instant Pot® Split Pea Soup with Ham</h3>
+                <p class="recipe-description">A hearty split pea soup made in the Instant Pot with ham, vegetables, and perfectly cooked split peas...</p>
+            </a>
+            <a href="./0173-wegmans-pork-butt-steaks.html" class="recipe-card" data-title="wegman's pork butt steaks" data-desc="my family loves these pork butt steaks. i got this recipe from the butcher at wegman's when they were out of the prepare...">
+                <div class="recipe-number">Recipe #0173</div>
+                <h3 class="recipe-title">Wegman's Pork Butt Steaks</h3>
+                <p class="recipe-description">My family loves these pork butt steaks. I got this recipe from the butcher at Wegman's when they were out of the prepare...</p>
+            </a>
+            <a href="./0174-wegmans-pork-butt-steaks-continued.html" class="recipe-card" data-title="wegman's pork butt steaks (continued)" data-desc="continuation of the wegman's pork butt steaks recipe with cooking instructions and nutrition information...">
+                <div class="recipe-number">Recipe #0174</div>
+                <h3 class="recipe-title">Wegman's Pork Butt Steaks (continued)</h3>
+                <p class="recipe-description">Continuation of the Wegman's Pork Butt Steaks recipe with cooking instructions and nutrition information...</p>
+            </a>
         </div>
     </div>
-    
+
     <script>
         // Search functionality
         const searchBox = document.getElementById('searchBox');
         const recipeGrid = document.getElementById('recipeGrid');
-        const noResults = document.getElementById('noResults');
-        const recipeCards = document.querySelectorAll('.recipe-card');
+        const filterTags = document.querySelectorAll('.filter-tag');
         
-        function performSearch() {
-            const searchTerm = searchBox.value.toLowerCase().trim();
-            let visibleCount = 0;
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const recipes = recipeGrid.querySelectorAll('.recipe-card');
             
-            recipeCards.forEach(card => {
-                const title = card.dataset.title;
-                const isMatch = title.includes(searchTerm);
-                
-                if (isMatch) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
+            recipes.forEach(recipe => {
+                const title = recipe.dataset.title;
+                const desc = recipe.dataset.desc;
+                const visible = title.includes(searchTerm) || desc.includes(searchTerm);
+                recipe.style.display = visible ? 'block' : 'none';
             });
-            
-            // Show/hide no results message
-            if (visibleCount === 0 && searchTerm !== '') {
-                noResults.classList.remove('hidden');
-                recipeGrid.classList.add('hidden');
-            } else {
-                noResults.classList.add('hidden');
-                recipeGrid.classList.remove('hidden');
-            }
-        }
-        
-        // Search on input
-        searchBox.addEventListener('input', performSearch);
-        
-        // Clear search on ESC
-        searchBox.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                searchBox.value = '';
-                performSearch();
-            }
         });
         
-        console.log('Alicia\'s Recipe collection loaded with 108 authentic recipes - 100+ MILESTONE!');
+        // Filter functionality
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                // Remove active class from all tags
+                filterTags.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tag
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const recipes = recipeGrid.querySelectorAll('.recipe-card');
+                
+                recipes.forEach(recipe => {
+                    if (filter === 'all') {
+                        recipe.style.display = 'block';
+                    } else {
+                        const title = recipe.dataset.title;
+                        const desc = recipe.dataset.desc;
+                        const visible = title.includes(filter) || desc.includes(filter);
+                        recipe.style.display = visible ? 'block' : 'none';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
