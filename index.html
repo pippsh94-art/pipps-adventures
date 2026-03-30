@@ -3,59 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Pipps' Adventures</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .top-nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            background-color: #34495e;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .content-link {
+            display: block;
+            padding: 0.75rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: all 0.3s;
+        }
+        
+        .content-link:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="nav">
-        <a href="index.html">🏠 Home</a>
-    </div>
-    
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-links">
+            <a href="#recipes">🍳 Recipes</a>
+            <a href="#camping">🏕️ Camping</a>
+            <a href="#retirement">💰 Retirement</a>
+            <a href="#football">🏈 Football</a>
+            <a href="#travel">✈️ Travel</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1 id="pipps-adventures">🏕️ Pipps' Adventures</h1>
-        <p>Your hub for camping trips, travel plans, retirement guides, and recipe collections.</p>
+        <h1 style="text-align: center; color: #2c3e50; margin-bottom: 2rem;">🦞 Pipps' Adventures</h1>
+        <p style="text-align: center; font-size: 1.2rem; color: #7f8c8d; margin-bottom: 3rem;">Your hub for camping trips, travel plans, retirement guides, and recipe collections.</p>
 
-        <hr />
+        <!-- Recipes Section -->
+        <section id="recipes" class="section">
+            <h2>🍳 Recipe Collection</h2>
+            <div class="section-grid">
+                <a href="recipes/" class="content-link">
+                    <strong>Digital Cookbook</strong><br>
+                    <small>832 recipes extracted from PDF, searchable and mobile-friendly</small>
+                </a>
+            </div>
+        </section>
 
-        <h2 id="recipe-collection">🍳 Recipe Collection</h2>
-        <ul>
-            <li><a href="recipes/">Recipe Collection — Digital Cookbook</a> — 832 recipes extracted from PDF, searchable and mobile-friendly</li>
-        </ul>
+        <!-- Camping & Travel Section -->
+        <section id="camping" class="section">
+            <h2>🏕️ Camping & Travel</h2>
+            <div class="section-grid">
+                <a href="camping/idaho-camping-guide-18ft-rv.html" class="content-link">
+                    <strong>Idaho Camping Guide</strong><br>
+                    <small>18ft RV camping spots and routes</small>
+                </a>
+                <a href="camping/oregon-camping-guide-18ft-rv.html" class="content-link">
+                    <strong>Oregon Camping Guide</strong><br>
+                    <small>18ft RV camping from Star, ID</small>
+                </a>
+                <a href="camping/new-mexico-camping-guide-18ft-rv.html" class="content-link">
+                    <strong>New Mexico Camping</strong><br>
+                    <small>18ft RV adventures in New Mexico</small>
+                </a>
+                <a href="camping/idaho-50-geography-facts-locations.html" class="content-link">
+                    <strong>Idaho Geography</strong><br>
+                    <small>50 amazing facts & locations</small>
+                </a>
+            </div>
+        </section>
 
-        <hr />
+        <!-- Travel Plans -->
+        <section id="travel" class="section">
+            <h2>✈️ Travel Plans</h2>
+            <div class="section-grid">
+                <a href="santa-fe-trip-plan.html" class="content-link">
+                    <strong>Santa Fe Trip Plan</strong><br>
+                    <small>Day-by-day itinerary</small>
+                </a>
+                <a href="treasure-valley-day-trips.html" class="content-link">
+                    <strong>Treasure Valley Day Trips</strong><br>
+                    <small>Local adventures from Star, ID</small>
+                </a>
+                <a href="july-4th-2026.html" class="content-link">
+                    <strong>July 4th 2026 Plan</strong><br>
+                    <small>Independence Day celebration</small>
+                </a>
+            </div>
+        </section>
 
-        <h2 id="camping-travel">Camping &amp; Travel</h2>
-        
-        <h3 id="idaho">Idaho</h3>
-        <ul>
-            <li><a href="camping/idaho-camping-guide-18ft-rv.html">Idaho Camping Guide — 18ft RV</a></li>
-            <li><a href="camping/idaho-50-geography-facts-locations.html">Idaho: 50 Geography Facts &amp; Locations</a></li>
-        </ul>
+        <!-- Retirement Planning -->
+        <section id="retirement" class="section">
+            <h2>💰 Retirement Planning</h2>
+            <div class="section-grid">
+                <a href="retirement/retirement-guide-retire-at-60.html" class="content-link">
+                    <strong>Retire at 60 Guide</strong><br>
+                    <small>Complete retirement planning strategy</small>
+                </a>
+                <a href="retirement/10-retirement-upgrades-before-announcing.html" class="content-link">
+                    <strong>10 Critical Financial Upgrades</strong><br>
+                    <small>Before announcing retirement</small>
+                </a>
+                <a href="retirement/passing-assets-to-children-guide.html" class="content-link">
+                    <strong>Passing Assets to Children</strong><br>
+                    <small>Estate planning strategies</small>
+                </a>
+                <a href="retirement/retirement-estate-protection-guide.html" class="content-link">
+                    <strong>Estate Protection Guide</strong><br>
+                    <small>Protecting your retirement assets</small>
+                </a>
+                <a href="retirement-youtubers.html" class="content-link">
+                    <strong>YouTube Retirement Creators</strong><br>
+                    <small>7 top retirement planning channels</small>
+                </a>
+                <a href="morningstar-spending-strategies.html" class="content-link">
+                    <strong>Morningstar Spending Strategies</strong><br>
+                    <small>Research-based withdrawal methods</small>
+                </a>
+            </div>
+        </section>
 
-        <h3 id="oregon">Oregon</h3>
-        <ul>
-            <li><a href="camping/oregon-camping-guide-18ft-rv.html">Oregon Camping Guide — 18ft RV from Star, ID</a></li>
-        </ul>
+        <!-- Football Section -->
+        <section id="football" class="section">
+            <h2>🏈 Football</h2>
+            <div class="section-grid">
+                <a href="football-playbook-guide.html" class="content-link">
+                    <strong>Football Playbook Guide</strong><br>
+                    <small>Complete playbook strategies</small>
+                </a>
+                <a href="route-tree-poster.html" class="content-link">
+                    <strong>Route Tree Poster</strong><br>
+                    <small>Visual guide to football routes</small>
+                </a>
+                <a href="play-call-sheet.html" class="content-link">
+                    <strong>Play Call Sheet</strong><br>
+                    <small>Game day reference</small>
+                </a>
+                <a href="bunch-passing-playsheet.html" class="content-link">
+                    <strong>Bunch Passing Plays</strong><br>
+                    <small>Specialized passing formations</small>
+                </a>
+                <a href="zone-blocking-playsheet.html" class="content-link">
+                    <strong>Zone Blocking Guide</strong><br>
+                    <small>Offensive line techniques</small>
+                </a>
+            </div>
+        </section>
 
-        <h3 id="new-mexico">New Mexico</h3>
-        <ul>
-            <li><a href="camping/new-mexico-camping-guide-18ft-rv.html">New Mexico Camping Guide — 18ft RV</a></li>
-            <li><a href="camping/santa-fe-trip-plan.html">Santa Fe Trip Plan — Day-by-Day Itinerary</a></li>
-        </ul>
-
-        <hr />
-
-        <h2 id="retirement-planning">Retirement Planning</h2>
-        <ul>
-            <li><a href="retirement/retirement-guide-retire-at-60.html">Retirement Guide — Retire at 60</a></li>
-            <li><a href="retirement/10-retirement-upgrades-before-announcing.html">10 Critical Financial Upgrades Before Announcing Retirement</a></li>
-            <li><a href="retirement/passing-assets-to-children-guide.html">Passing Assets to Children</a></li>
-            <li><a href="retirement/retirement-estate-protection-guide.html">Retirement &amp; Estate Protection</a></li>
-        </ul>
-
-        <hr />
-
-        <p><em>Built with 🦞 energy</em></p>
+        <hr style="margin: 3rem 0;">
+        <p style="text-align: center; color: #7f8c8d;"><em>Built with 🦞 energy</em></p>
     </div>
 </body>
-</html><!-- Force rebuild Mon Mar 30 09:05:52 PDT 2026 -->
+</html>
