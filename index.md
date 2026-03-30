@@ -33,6 +33,7 @@ Your hub for camping trips, travel plans, retirement guides, and recipe collecti
 ## Retirement Planning
 
 - [Retirement Guide — Retire at 60](retirement/retirement-guide-retire-at-60.md)
+- [10 Critical Financial Upgrades Before Announcing Retirement](retirement/10-retirement-upgrades-before-announcing.md)
 - [Passing Assets to Children](retirement/passing-assets-to-children-guide.md)
 - [Retirement & Estate Protection](retirement/retirement-estate-protection-guide.md)
 
