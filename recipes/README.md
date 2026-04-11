@@ -1,30 +1,36 @@
-# Alicia's Recipe Collection
+# Pipps Adventures — Embedded Recipe Collection
 
-This directory contains 49 authentic recipes from Alicia's cookbook, digitized and formatted for web viewing.
+A digitized cookbook extracted from PDF, served as part of the pipps-adventures site.
+
+## What This Is
+
+215 individual recipe pages extracted from a scanned cookbook PDF, with each cookbook page becoming its own HTML file. Designed for in-browser browsing and search via the recipe index.
+
+**Note on the file count vs. recipe count:** Because the original PDF extraction created one HTML file per cookbook page, multi-page recipes (like the braised lamb shanks that span 9 pages, or broccoli cheese soup variations across 6 pages) appear as multiple files. The actual number of unique recipes is meaningfully lower than the 215 file count — closer to ~50–80 distinct recipes once duplicates and continuation pages are accounted for. A future cleanup pass could consolidate these.
 
 ## Features
 
-- **📖 Complete Recipe Collection**: All 49 recipes from Alicia's cookbook (pages 4-65)
-- **🖼️ Original Images**: Each recipe includes the original cookbook page image
-- **🔍 Searchable Interface**: Find recipes by name or ingredient
-- **📱 Mobile Friendly**: Responsive design works on all devices
-- **⏱️ Timing Information**: Prep, cook, and total times when available
+- **📖 Recipe Collection:** 215 individual recipe pages from the cookbook PDF
+- **🖼️ Original Images:** Most recipes include the original cookbook page image
+- **🔍 Searchable Interface:** Find recipes by name via the search box on the index
+- **📱 Mobile Friendly:** Responsive design works on all devices
+- **⏱️ Timing Information:** Prep, cook, and total times when available
 
 ## Structure
 
-- `index.html` - Main searchable recipe index
-- `0004-*.html` through `0065-*.html` - Individual recipe pages
-- `../images/page_*.jpg` - Original cookbook page images
+- `index.html` — Main searchable recipe index (the canonical hub page)
+- `0001-*.html` through `0760-*.html` — Individual recipe pages, numbered by source PDF page
+- `../images/page_*.jpg` — Original cookbook page images
 
 ## Recipe Format
 
-Each recipe includes:
-- Original cookbook page image
-- Recipe description 
-- Prep/cook/total times (when available)
+Each recipe page typically includes:
+- Original cookbook page image (where available)
+- Recipe description
+- Prep / cook / total times (when available)
 - Ingredients list
 - Step-by-step instructions
-- Page number reference
+- Page number reference back to the source
 
 ## Adding Images to New Recipes
 
@@ -33,7 +39,7 @@ When adding new recipes, images are automatically included if:
 2. A corresponding image exists at `../images/page_NNNN.jpg`
 3. The recipe HTML structure follows the established template
 
-The image section is automatically added after the `<h1>` title tag:
+The image section is added after the `<h1>` title tag:
 
 ```html
 <div class="original-image" style="margin-bottom: 1.5rem; text-align: center;">
@@ -44,4 +50,8 @@ The image section is automatically added after the `<h1>` title tag:
 
 ## Live Site
 
-View the collection at: https://pippsh94-art.github.io/pipps-adventures/recipes/
+Browse the collection at: https://pippsh94-art.github.io/pipps-adventures/recipes/
+
+## Distinction from Alicia's Main Recipe Site
+
+This embedded cookbook is **separate** from Alicia's standalone recipe site (`projects/Alicia-recipe/`, served at http://localhost:9090 via launchd), which contains 835+ recipes from a different source. The two collections do not currently share content.
