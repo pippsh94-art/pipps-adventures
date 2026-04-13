@@ -207,16 +207,17 @@ const html = `<!DOCTYPE html>
         <div class="result-count" id="resultCount">Showing all ${recipes.length} recipes</div>
         <div class="recipe-grid" id="recipeGrid">
 ${recipes.map(r => {
+    const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const imgHtml = r.hasImage
-        ? `<img src="../images/page_${r.number}.jpg" alt="${r.title}" loading="lazy">`
+        ? `<img src="../images/page_${r.number}.jpg" alt="${esc(r.title)}" loading="lazy">`
         : `<div class="no-img">🍽</div>`;
     const tagsHtml = r.categories.length > 0
         ? `<div class="card-tags">${r.categories.map(c => `<span class="card-tag">${c}</span>`).join('')}</div>`
         : '';
-    return `            <a href="./${r.file}" class="recipe-card" data-search="${r.searchText}" data-cats="${r.categories.join(' ')}">
+    return `            <a href="./${r.file}" class="recipe-card" data-search="${esc(r.searchText)}" data-cats="${r.categories.join(' ')}">
                 ${imgHtml}
                 <div class="card-body">
-                    <h3>${r.title}</h3>
+                    <h3>${esc(r.title)}</h3>
                     ${tagsHtml}
                 </div>
             </a>`;
