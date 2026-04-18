@@ -32,6 +32,23 @@ function classify(title, ingredients) {
     if (/\blamb\b/.test(all)) cats.push('lamb');
     if (/\bshrimp\b|\bsalmon\b|\bscallop\b|\bcrab\b|\blobster\b|\bseafood\b|\bfish\b|\btuna\b|\bcod\b|\btilapia\b|\bmahi\b|\boyster\b/.test(all)) cats.push('seafood');
 
+    // Vegetables (by title OR prominent ingredient)
+    if (/\bpotato\b|\bpotatoes\b/.test(all) && !/\bsweet potato/.test(all)) cats.push('potato');
+    if (/\bbroccoli\b/.test(all)) cats.push('broccoli');
+    if (/\bspinach\b/.test(all)) cats.push('spinach');
+    if (/\bzucchini\b/.test(all)) cats.push('zucchini');
+    if (/\bmushroom/.test(all)) cats.push('mushroom');
+    if (/\bcauliflower\b/.test(all)) cats.push('cauliflower');
+    if (/\btomato/.test(t)) cats.push('tomato'); // title only — tomato is in too many ingredient lists
+    if (/\bsquash\b|\bpumpkin\b|\bbutternut\b|\bacorn squash\b/.test(all)) cats.push('squash');
+    if (/\basparagus\b/.test(all)) cats.push('asparagus');
+    if (/\beggplant\b/.test(all)) cats.push('eggplant');
+    if (/\bkale\b/.test(all)) cats.push('kale');
+    if (/\bbrussels?\s*sprout/.test(all)) cats.push('brussels');
+    if (/\bavocado\b/.test(all)) cats.push('avocado');
+    if (/\bcabbage\b/.test(all)) cats.push('cabbage');
+    if (/\bartichoke\b/.test(all)) cats.push('artichoke');
+
     // Meal types
     if (/\bsoup\b|\bchowder\b|\bstew\b|\bbisque\b|\bbroth\b|\bribollito\b|\btagine\b/.test(t)) cats.push('soup');
     if (/\bpasta\b|\bspaghetti\b|\bpenne\b|\brigatoni\b|\bfettuccin\b|\blinguine\b|\bmacaroni\b|\bnoodle\b|\bravioli\b|\bgnocchi\b|\blasagna\b|\btetrazzini\b|\bstroganoff\b|\bamatriciana\b/.test(all)) cats.push('pasta');
@@ -186,6 +203,24 @@ const html = `<!DOCTYPE html>
                 <button class="filter-tag" data-filter="pork">Pork<span class="count">${catCounts['pork'] || 0}</span></button>
                 <button class="filter-tag" data-filter="lamb">Lamb<span class="count">${catCounts['lamb'] || 0}</span></button>
                 <button class="filter-tag" data-filter="seafood">Seafood<span class="count">${catCounts['seafood'] || 0}</span></button>
+            </div>
+            <div class="filter-label">Vegetable</div>
+            <div class="filter-tags">
+                <button class="filter-tag" data-filter="potato">Potato<span class="count">${catCounts['potato'] || 0}</span></button>
+                <button class="filter-tag" data-filter="mushroom">Mushroom<span class="count">${catCounts['mushroom'] || 0}</span></button>
+                <button class="filter-tag" data-filter="cauliflower">Cauliflower<span class="count">${catCounts['cauliflower'] || 0}</span></button>
+                <button class="filter-tag" data-filter="cabbage">Cabbage<span class="count">${catCounts['cabbage'] || 0}</span></button>
+                <button class="filter-tag" data-filter="spinach">Spinach<span class="count">${catCounts['spinach'] || 0}</span></button>
+                <button class="filter-tag" data-filter="broccoli">Broccoli<span class="count">${catCounts['broccoli'] || 0}</span></button>
+                <button class="filter-tag" data-filter="zucchini">Zucchini<span class="count">${catCounts['zucchini'] || 0}</span></button>
+                <button class="filter-tag" data-filter="avocado">Avocado<span class="count">${catCounts['avocado'] || 0}</span></button>
+                <button class="filter-tag" data-filter="squash">Squash/Pumpkin<span class="count">${catCounts['squash'] || 0}</span></button>
+                <button class="filter-tag" data-filter="tomato">Tomato<span class="count">${catCounts['tomato'] || 0}</span></button>
+                <button class="filter-tag" data-filter="kale">Kale<span class="count">${catCounts['kale'] || 0}</span></button>
+                <button class="filter-tag" data-filter="artichoke">Artichoke<span class="count">${catCounts['artichoke'] || 0}</span></button>
+                <button class="filter-tag" data-filter="asparagus">Asparagus<span class="count">${catCounts['asparagus'] || 0}</span></button>
+                <button class="filter-tag" data-filter="brussels">Brussels<span class="count">${catCounts['brussels'] || 0}</span></button>
+                <button class="filter-tag" data-filter="eggplant">Eggplant<span class="count">${catCounts['eggplant'] || 0}</span></button>
             </div>
             <div class="filter-label">Type</div>
             <div class="filter-tags">
