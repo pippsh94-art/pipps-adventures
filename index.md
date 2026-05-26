@@ -5,13 +5,7 @@ title: Pipps' Adventures
 
 # 🏕️ Pipps' Adventures
 
-Your hub for camping trips, travel plans, retirement guides, and recipe collections.
-
----
-
-## 🍳 Recipe Collection
-
-- [Recipe Collection — Digital Cookbook](recipes/) — 832 recipes extracted from PDF, searchable and mobile-friendly
+Your hub for camping trips, travel plans, and retirement guides.
 
 ---
 
