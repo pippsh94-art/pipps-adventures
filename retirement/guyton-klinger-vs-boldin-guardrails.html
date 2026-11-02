@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guyton-Klinger vs Boldin Guardrails</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="nav"><a href="../index.html">🏠 Home</a></div>
+<div class="container">
+
+<h1>Guyton-Klinger vs Boldin Guardrails</h1>
+
+<blockquote>
+<p><strong>Inspired by:</strong> <a href="https://youtu.be/uFJEufMuL40">Guyton-Klinger vs. Boldin: Which Retirement Strategy Wins?</a> — The Retirement Gnome (Nov 2, 2026, 14 min).</p>
+<p>Rewrite in site voice, not a transcript. Guyton–Klinger rules checked against the 2006 Journal of Financial Planning paper. Boldin thresholds checked against Boldin’s own help article. Not tax, legal, or personalized advice — run your own numbers (or a CFP) before you raise or cut a dollar of spending.</p>
+</blockquote>
+
+<hr>
+
+<h2>The Point</h2>
+<p>Spending guardrails are a thermostat, not a 4% thermostat-forever. You pick a method that says: <strong>too poor → cut a bit; too rich → spend a bit more; in the middle → leave it alone.</strong> The fight is which inputs the thermostat actually sees.</p>
+<p><strong>Guyton–Klinger</strong> looks at two numbers: portfolio value and how much you took from it. <strong>Boldin</strong> (and the Morningstar “probability-based” family already on this site) looks at the whole plan — Social Security, pensions, taxes, medical, the rest of the spending — and asks what Monte Carlo success you are sitting on.</p>
+<p>Related on this site: <a href="morningstar-spend-more.html">Morningstar spend-more study</a> · <a href="morningstar-josh-review.html">Josh’s review</a> · <a href="tax-timeline-55-to-75.html">Tax timeline 55–75</a> · <a href="retire-at-60-guide.html">Retire at 60</a></p>
+
+<hr>
+
+<h2>Same idea, different machine</h2>
+<table>
+<thead>
+<tr><th></th><th>Guyton–Klinger (2006)</th><th>Boldin Spending Guardrails</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>What it watches</strong></td><td>Portfolio + withdrawal rate only</td><td>Whole plan (income streams, taxes, medical, spending, balances)</td></tr>
+<tr><td><strong>Trigger</strong></td><td>Current withdrawal % drifts ±20% from the starting rate</td><td>Monte Carlo chance of success vs 95% / 80% / 70%</td></tr>
+<tr><td><strong>Move</strong></td><td>Cut or raise <em>portfolio withdrawals</em> 10%</td><td>Recalculate a <em>gross</em> safe-spend target</td></tr>
+<tr><td><strong>Start rate (typical)</strong></td><td>Guyton tested ~5–6%. Morningstar’s G-K run started at 5.2%</td><td>Whatever spend keeps ~80% success</td></tr>
+<tr><td><strong>Still working?</strong></td><td>Rules assume you are already withdrawing</td><td>Only the Safe Spending Target is useful; the $ guardrails on the page are for people already retired</td></tr>
+<tr><td><strong>What “spend” means</strong></td><td>Dollars leaving the portfolio</td><td>All-in lifestyle: taxes, healthcare, housing, one-time costs averaged in</td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Guyton–Klinger — four mechanical rules</h2>
+<p>Jonathan Guyton and William Klinger (JFP, 2006): start at a fixed withdrawal rate, then apply rules every year. The Gnome video walked the two that actually move the paycheck.</p>
+<ol>
+<li><strong>Portfolio management.</strong> Keep the mix. Rebalance when you drift. Boring on purpose.</li>
+<li><strong>Withdrawal / inflation.</strong> Raise last year’s dollar withdrawal by last year’s inflation — <em>unless</em> the portfolio had a down year. The original paper’s “modified withdrawal rule” skips the inflation raise after a negative return. The video skipped this caveat. Do not skip it in real life.</li>
+<li><strong>Capital preservation (lower rail).</strong> Current withdrawal ÷ current portfolio. If that rate is more than <strong>20% above</strong> the initial rate (5.0% start → 6.0%+), cut the dollar withdrawal <strong>10%</strong>.</li>
+<li><strong>Prosperity (upper rail).</strong> If that rate is more than <strong>20% below</strong> the initial rate (5.0% start → 4.0% or less), raise the dollar withdrawal <strong>10%</strong>.</li>
+</ol>
+<p><strong>Worked example (video’s 5% start):</strong> plan is $50k off $1M. Bad year, portfolio shrinks, same $50k is now 6.5% of what’s left. 6.5% is more than 20% above 5% → 10% cut. Great year, same $50k is 3.5% of a fatter pile → 10% raise.</p>
+<p><strong>What it will not see:</strong> Social Security claiming, a pension, Roth vs traditional mix, ACA MAGI, IRMAA, or a big one-time truck/house hit. It is a portfolio-withdrawal machine. That is a feature if you want a spreadsheet you can run on a napkin. It is a bug if most of your retirement cash is not “sell shares.”</p>
+<p>Morningstar’s study (on this site) still liked G-K for lifetime spending vs a static 4% rule — 5.2% start, $1.36M median lifetime spend, ~$700k median leftover — but <a href="morningstar-josh-review.html">probability-based guardrails beat it</a> on lifetime spend and are simpler to explain.</p>
+
+<hr>
+
+<h2>Boldin — Monte Carlo rails on the whole plan</h2>
+<p>Boldin’s own help article (May 26, 2026): Insights → Spending Guardrails. Unlike a percentage-of-portfolio rule, it solves for spend that keeps success in a band.</p>
+<table>
+<thead>
+<tr><th>Number</th><th>Chance of success</th><th>What it means</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Safe Spending Target</strong></td><td>~80%</td><td>Baseline lifestyle if things go reasonably well. Every user gets this.</td></tr>
+<tr><td><strong>Upper guardrail</strong></td><td>~95%</td><td>Retired users only. You’re leaving money on the table — room to spend, gift, or travel.</td></tr>
+<tr><td><strong>Lower guardrail</strong></td><td>~70%</td><td>Retired users only. Early warning. Temporary belt-tighten, not a permanent lifestyle funeral.</td></tr>
+</tbody>
+</table>
+<p><strong>Still working:</strong> the only number that matters is Safe Spend vs Planned Spend. Compare them. Directional. Not a call to blow next month’s budget. Boldin even says the dollar guardrails shown before retirement are based on projected retirement-date balances — the Gnome’s complaint that they should hide those numbers until you actually retire is fair.</p>
+<p><strong>Already retired:</strong> Safe Spend is what you can support <em>today</em> through longevity, given current balances. Check it on a cadence (Gnome: every few months; Boldin: at least annually). Bull market that pushes you over the upper rail → raise. Drawdown under the lower rail → cut enough to get probability back toward the 80% zone, then reassess.</p>
+<p><strong>Do not spend the headline number.</strong> It is gross: user-entered lifestyle + debt + healthcare + <em>system-computed taxes</em> + one-time items (car, house) smeared as a monthly average across the whole retirement. A $50k truck in the plan inflates the “monthly” figure. Pay the IRS first.</p>
+
+<hr>
+
+<h2>Which one wins?</h2>
+<p>Wrong question if you treat them as sports teams. They answer different jobs.</p>
+<ul>
+<li><strong>Want a ruleset with no software and no Monte Carlo faith?</strong> Guyton–Klinger. Accept that it is blind to Social Security, taxes, and healthcare.</li>
+<li><strong>Want the thermostat to see the real household?</strong> Probability-based / Boldin. That is the same family Morningstar ranked #1 for lifetime spending and the one Josh called “even I can follow it.”</li>
+<li><strong>Want both?</strong> Use Boldin (or any Monte Carlo planner) as the annual decision, and keep a G-K-style 20%/10% note in the back of the notebook as a sanity check on the <em>portfolio-withdrawal</em> slice only.</li>
+</ul>
+<p>This site’s existing pick does not change: <strong>probability-based guardrails over a static 4% rule</strong>, with RMD as the simple fallback. See <a href="morningstar-spend-more.html">the Morningstar write-up</a>.</p>
+
+<hr>
+
+<h2>Pipps filter</h2>
+<ul>
+<li><strong>You are not retired yet.</strong> Treat Boldin’s Safe Spend vs Planned Spend as a yearly reality check — not a spending raise. Ignore the $ upper/lower rails until the paycheck actually stops.</li>
+<li><strong>G-K is the wrong primary tool while wages still exist</strong> and while a taxable brokerage is supposed to be the 60–65 bridge. Those years are MAGI / ACA / Roth-conversion years, not “hit 5.2% and inflate.” See the <a href="tax-timeline-55-to-75.html">tax timeline</a>.</li>
+<li><strong>Once retired, prefer the probability thermostat</strong> (Boldin or equivalent) over mechanical G-K. It already knows Social Security timing and tax drag. G-K will cheerfully tell you to take more from the IRA in a year that also kicks IRMAA.</li>
+<li><strong>If moving</strong> (example: high-tax state → lower-tax state), rebuild the Boldin plan in the new tax regime before you trust the Safe Spend number. State tax is inside “gross spend.”</li>
+<li>The video ends in a paid plan-review pitch. Skip it. The usable idea is the thermostat: check, nudge 10%-ish, don’t freeze spending for 30 years out of fear.</li>
+</ul>
+
+<hr>
+
+<h2>Do this once a year (or twice if already drawing)</h2>
+<ol>
+<li>Update balances by tax type, expected MAGI, and next year’s known one-time hits.</li>
+<li>If still working: Safe Spend vs Planned Spend. Gap? Save more, spend less later, or push the date. Do not “give yourself a raise” off a pre-retirement rail.</li>
+<li>If retired: where is Monte Carlo vs 70 / 80 / 95? Cut, hold, or raise. Temporary, not a personality change.</li>
+<li>Separately: is the <em>portfolio withdrawal rate</em> more than 20% off the starting rate? If yes and the Monte Carlo still looks fine, believe the whole-plan number, not the napkin G-K cut.</li>
+</ol>
+
+<hr>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://youtu.be/uFJEufMuL40">YouTube — Guyton-Klinger vs. Boldin (The Retirement Gnome)</a></li>
+<li><a href="https://www.financialplanningassociation.org/sites/default/files/2021-11/2006%20-%20Guyton%20and%20Klinger%20-%20Decision%20Rules%20and%20SWR%20(1).PDF">Guyton &amp; Klinger — Decision Rules and Maximum Initial Withdrawal Rates (JFP, 2006)</a></li>
+<li><a href="https://help.boldin.com/en/articles/12571086-new-feature-spending-guardrails-insight">Boldin Help — Spending Guardrails Insight (95% / 80% / 70%)</a></li>
+<li><a href="https://www.morningstar.com/retirement/heres-how-you-can-spend-more-during-retirement">Morningstar — Amy Arnott, spend-more study</a></li>
+<li><a href="https://www.kitces.com/blog/guyton-klinger-guardrails-retirement-income-rules-risk-based/">Kitces — Guyton-Klinger rules and critiques</a></li>
+</ul>
+
+<p><em>Added Nov 2, 2026 · rewrite of a 14-minute guardrails comparison · confirm current Boldin UI and your own Monte Carlo before you spend a raise</em></p>
+
+</div>
+</body>
+</html>
